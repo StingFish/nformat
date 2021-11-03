@@ -234,7 +234,7 @@ window.onclick = function(event) {
      <?php
   $db=mysqli_connect('localhost','root','','yearbook');
   $goo= 2021;
-         $user_check_query = "SELECT * FROM folder where type='C' ORDER BY year";
+         $user_check_query = "SELECT * FROM folder2 where type='C' ORDER BY year";
          $result = mysqli_query($db, $user_check_query);
 
          while ($row = mysqli_fetch_array($result)){
@@ -270,7 +270,7 @@ if (isset($_POST['submit1'])) {
     $db=mysqli_connect('localhost', 'root', '', 'yearbook');
     $yr= mysqli_real_escape_string($db, $_POST['f1']);
 
-         $user_check_query = "SELECT * FROM folder where year='$yr' AND type='C' LIMIT 1";
+         $user_check_query = "SELECT * FROM folder2 where year='$yr' AND type='C' LIMIT 1";
          $result = mysqli_query($db, $user_check_query);
          $user = mysqli_fetch_assoc($result);
          if ($user) { // if user exists
@@ -279,7 +279,7 @@ if (isset($_POST['submit1'])) {
          }
   }
          else{
-            $adds="INSERT INTO folder (type, year) VALUES ('C', '$yr')";
+            $adds="INSERT INTO folder2 (type, year) VALUES ('C', '$yr')";
             mysqli_query($db, $adds);
             echo "<script>window.location='path.php';</script>";
          }

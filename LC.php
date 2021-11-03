@@ -9,7 +9,7 @@ if(isset($_SESSION['User2'])) {
      exit; // for good measure
 }
 if(isset($_SESSION['User3'])) {
-     header("Location: StudentDashboard.php"); // redirects them to homepage
+     header("Location: main.php"); // redirects them to homepage
      exit; // for good measure
 }
 ?>
@@ -86,9 +86,6 @@ if(isset($_SESSION['User3'])) {
     </div><br>
     <div class="input-group">
       <button class="button button1" name="lc">Login</button>
-      <p style="font-size: 15px;">
-        Not yet a member? Register <a href="register.php">here.</a>
-      </p>
     </div>
   </form>
 </body>

@@ -100,7 +100,7 @@ if (isset($_POST['lc'])) {
                   $log = mysqli_fetch_assoc($resulta);
                   $tot= $log['year'];
                    $_SESSION['Users3']= $tot;
-                  echo "<script>alert('Student');window.location='display2.php';</script>";
+                  echo "<script>alert('Student');window.location='main.php';</script>";
               }
               else{
                   echo "<script>alert('Invalid');window.location='LC.php';</script>";
