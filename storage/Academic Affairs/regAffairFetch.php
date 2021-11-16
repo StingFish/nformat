@@ -43,9 +43,6 @@ if(mysqli_num_rows($result) > 0)
 						<th>Action</th>
 						</tr>
 					</tfoot>
-					<tbody>
-
-          <tbody id="table">
 					';
 	while($row = mysqli_fetch_array($result))
 	{
