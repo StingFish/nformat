@@ -288,9 +288,17 @@ only screen and
 .topButton{
   display: flex;
   justify-content: space-between;
+  margin-right: 10px;
 }
 .add-btn-reg-ao, .add-btn-reg-a, .add-btn-reg-grad, .add-btn-m:hover{
   cursor: pointer;
+}
+.add-btn-reg-ao, .add-btn-reg-a, .add-btn-reg-grad, .add-btn-m{
+  background-color: #0275d8;
+  width: 15%;
+  border:none;
+  padding:6px;
+  color:white;
 }
 i{
   font-weight: 600;
@@ -366,4 +374,33 @@ h2{
 .image-official{
   width: 80px;
   height: 100px;
+}
+/*edit & delete */
+.button2{
+  border:1px solid white;
+  width:30px;
+}
+.button2 a{
+  text-decoration: none;
+  color:#fff;
+}
+.button3{
+  border:1px solid white;
+  width:30px;
+}
+.button3 a{
+  text-decoration: none;
+  color:#fff;
+}
+.bGreen{
+  background-color: #00a86a;
+}
+.bRed{
+  background-color: #c62c2c;
+}
+#i{
+  background-color: #0275d8;
+  padding: 5px 10px 10px 5px;
+  color: #fff;
+  min-width: 40px;
 }
