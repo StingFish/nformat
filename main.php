@@ -5,6 +5,6 @@
          $result = mysqli_query($db, $user_check_query);
 
          while ($row = mysqli_fetch_array($result)){
-echo "<script>window.location ='template/".$row["tmp"]."'</script>";
+echo "<script>window.location ='template/main.php'</script>";
 }
 ?>
