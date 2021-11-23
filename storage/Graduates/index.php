@@ -13,13 +13,13 @@
 <meta charset="utf-8">
 <title>Item</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script><![endif]--> 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="assets/base.css">
 <link rel="stylesheet" href="sty1.css">
 
 <link rel="shortcut icon" href="CvSU/logo-removebg.png">
-
+<script src="jquery-3.6.0.js"></script>
 <style>
 body{
   background-image: url("assets/tmp2.jpg");
@@ -48,12 +48,12 @@ tfoot{
 </style>
 </head>
 <body>
-<?php 
+<?php
         $db = mysqli_connect('localhost', 'root', '', 'yearbook');
         $year = date("Y");
 
         if (isset($_GET['call'])) {
-        $Ys= mysqli_real_escape_string($db, $_GET['call']);  
+        $Ys= mysqli_real_escape_string($db, $_GET['call']);
 
         $sql = "SELECT * FROM shs WHERE year='$Ys' ORDER BY lname";
         $result = mysqli_query($db,$sql);
@@ -66,80 +66,99 @@ tfoot{
 </div>
   <a href="http://localhost/nformat/storage.php">Storage Files</a>
   <div class="dropdown">
-    <button class="dropbtn">Dropdown 
-      <i class="fa fa-caret-down"></i>
+    <button class="dropbtn">Dropdown
+      <i class="fa fa-caret-down fa-lg"></i>
     </button>
     <div class="dropdown-content">
       <a href="#">About History</a>
       <a href="#">About Us</a>
     </div>
-  </div> 
+  </div>
   <a href="#about">About</a>
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
 <br>
 <br>
 <br>
-<form style="float:left">
-  <input type="text" name="f1">
-</form>
-<br>
-<center>
-  <table id="wrapper">
-    <thead>
-    <tr>
-      <th>Image</th>
-      <th>Last Name</th>
-      <th>First Name</th>
-      <th>Middle Initial</th>
-      <th>Quotes</th>
-      <th>Year</th>
-    </tr>
-  </thead>
-  <tfoot>
-    <tr>
-      <th>Image</th>
-      <th>Last Name</th>
-      <th>First Name</th>
-      <th>Middle Initial</th>
-      <th>Quotes</th>
-      <th>Year</th>
-    </tr>
-  </tfoot>
-  <tbody>
-    <?php
-                  if (empty($rows)) {
-          echo "<tr>";
-          echo "<td colspan='6'><center>No results found.</center></td>";
-          echo "</tr>";
-          }
-          else{
-          while($row = mysqli_fetch_array($result)){
-          echo "<tr>";
-          echo "<td data-label='Image'><center>".'<img class="image-official" src="data:image/jpeg;base64,'.base64_encode($row['image'] ).'" style="height:80px;"/>'."</center></td>";
-          echo "<td data-label='Last Name'>" . $row['lname'] . "</td>";
-          echo "<td data-label='First Name'>" . $row['fname'] . "</td>";
-          echo "<td data-label='Middle\tInitial'>" . $row['mname'] . "</td>";
-          echo "<td data-label='Quotes'>" . $row['quotes'] . "</td>";
-          echo "<td data-label='Year'>" . $row['year'] . "</td>";
-          echo "</tr>";
-        }
-      }
-          echo "</tbody>";
-          echo "</table>";
-          echo "<br>";
-        mysqli_close($db);
-        ?>
-  </tbody>
-  </table>
-</div>
-</center>
-<br>
-<br>
+<!--- Start here --->
+<div class="search-container">
+  <div class="topButton">
+      <button class="add-btn-reg-grad"><i class="fas fa-user-plus"></i>Add Graduate</button>
+      <div class="addMember-reg-grad">
+          <form action="formFunction.php" method="post"  enctype="multipart/form-data">
+              <h2>Add Member</h2>
 
-</body>
-</html>
+              <div class="inputField">
+              <p>Select Image</p>
+              <input type="file" name="f1" required>
+
+              <p>Firstname</p>
+              <input type="text" name="Fname"required><br>
+
+              <p>Middle Initial</p>
+              <input type="text" name="Mname" maxlength="4" required><br>
+
+              <p>Lastname</p>
+              <input type="text" name="Lname"required><br>
+
+              <p>Year</p>
+              <input type="text" name="year" maxlength="4" required><br>
+
+              <button class="button button1" type="submit" name="submit3" >ADD</button>
+              <!--<input type="submit" name="submit1" class="button button1" value="Add">-->
+              <button class="cancel-btn-reg-grad button">CANCEL</button>
+            </div>
+          </form>
+      </div>
+      <div class="input-icons">
+        <input class="inp" type="text" placeholder="Search by name" name="search-text" id="search_text_graduates">
+        <i class="fas fa-search"></i>
+      </div>
+  </div>
+    <br>
+    <div id="result_graduates"></div>
+</div>
+
+
 <script>
+$(document).ready(function(){
+      let addButtonGrad = document.querySelector('.add-btn-reg-grad');
+      let addMemberGrad = document.querySelector('.addMember-reg-grad');
+      let cancelButtonGrad = document.querySelector('.cancel-btn-reg-grad');
+
+      addButtonGrad.addEventListener('click', function(){
+          addMemberGrad.classList.add('form-active');
+      });
+      cancelButtonGrad.addEventListener('click', function(){
+          addMemberGrad.classList.remove('form-active');
+      });
+
+      load_data();
+      function load_data(graduates_query)
+      {
+        $.ajax({
+          url:"regGraduateFetch.php",
+          method:"post",
+          data:{graduates_query:graduates_query},
+          success:function(data)
+          {
+            $('#result_graduates').html(data);
+          }
+        });
+      }
+
+      $('#search_text_graduates').keyup(function(){
+        var search = $(this).val();
+        if(search != '')
+        {
+          load_data(search);
+        }
+        else
+        {
+          load_data();
+        }
+      });
+    });
 function myFunction() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -149,3 +168,5 @@ function myFunction() {
   }
 }
 </script>
+</body>
+</html>
