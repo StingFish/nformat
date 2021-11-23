@@ -17,7 +17,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="assets/base.css">
 <link rel="stylesheet" href="sty1.css">
-
 <link rel="shortcut icon" href="CvSU/logo-removebg.png">
 
 <style>
@@ -67,7 +66,7 @@ tfoot{
   <a href="http://localhost/nformat/storage.php">Storage Files</a>
   <div class="dropdown">
     <button class="dropbtn">Dropdown
-      <i class="fa fa-caret-down"></i>
+      <i class="fa fa-caret-down fa-lg"></i>
     </button>
     <div class="dropdown-content">
       <a href="#">About History</a>
@@ -80,6 +79,7 @@ tfoot{
 <br>
 <br>
 <br>
+<!--- Start here --->
 <div class="search-container">
   <div class="topButton">
       <button class="add-btn-reg-grad"><i class="fas fa-user-plus"></i>Add Graduate</button>
