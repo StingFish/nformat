@@ -134,7 +134,7 @@ $(document).ready(function(){
             function load_data(affair_query)
             {
               $.ajax({
-                url:"",
+                url:"regAoFetch.php",
                 method:"post",
                 data:{affair_query:affair_query},
                 success:function(data)
