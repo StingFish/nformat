@@ -47,7 +47,7 @@ if(mysqli_num_rows($result) > 0)
 	while($row = mysqli_fetch_array($result))
 	{
 		$output .= '
-			<tr class="main">
+			<tr>
 				<td data-label="Image"><img class="image-official" src="data:image/jpeg;base64,'.base64_encode($row["image"]).'"/></td>
 				<td  data-label="First Name">'.$row["fname"].'</td>
         <td data-label="Last Name">'.$row["lname"].'</td>
