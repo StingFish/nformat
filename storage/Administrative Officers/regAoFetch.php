@@ -1,9 +1,9 @@
 <?php
 $db_connect = new mysqli('localhost','root','','yearbook') or die ("Could not connect to database".mysqli_error($db_connect));
 $output = '';
-if(isset($_POST["Squery"]))
+if(isset($_POST["affair_query"]))
 {
-	$search = mysqli_real_escape_string($db_connect, $_POST["Squery"]);
+	$search = mysqli_real_escape_string($db_connect, $_POST["affair_query"]);
 	$query = "
 	SELECT * FROM tab3
 	WHERE fname LIKE '%".$search."%'
