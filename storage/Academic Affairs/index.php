@@ -78,7 +78,7 @@ body{
   <!--- Start here --->
   <div class="search-container">
     <div class="topButton">
-        <button class="add-btn-reg-a add-btn-r"><i class="fas fa-user-plus"></i>Add Member</button>
+        <button class="add-btn-reg-a add-btn-r"><i id="i"class="fas fa-user-plus"></i>Add Member</button>
         <div class="addMember-reg-a">
             <form action="formFunction.php" class="form" method="post"  enctype="multipart/form-data">
                 <h2>Add Member</h2>
@@ -110,7 +110,7 @@ body{
         </div>
         <div class="input-icons">
           <input class="inp" type="text" placeholder="Search by name" name="search-text" id="search_text_affair">
-          <i class="fas fa-search"></i>
+          <i id="i"class="fas fa-search"></i>
         </div>
     </div>
       <br>
