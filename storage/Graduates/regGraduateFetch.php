@@ -27,7 +27,7 @@ if(mysqli_num_rows($result) > 0)
 							<th>First Name</th>
 							<th>Middle Name</th>
 							<th>Last Name</th>
-							<th>Qoutes</th>
+							<th>Quotes</th>
 							<th>Year</th>
               <th>Action</th>
 						</tr>
@@ -38,7 +38,7 @@ if(mysqli_num_rows($result) > 0)
 						<th>First Name</th>
 						<th>Middle Name</th>
 						<th>Last Name</th>
-						<th>Qoutes</th>
+						<th>Quotes</th>
 						<th>Year</th>
 						<th>Action</th>
 						</tr>
@@ -52,7 +52,7 @@ if(mysqli_num_rows($result) > 0)
 				<td data-label="First Name">'.$row["fname"].'</td>
 				<td data-label="Middle/tInitial">'.$row["mname"].'</td>
         <td data-label="Last Name">'.$row["lname"].'</td>
-				<td data-label="Qoutes">'.$row["qoutes"].'</td>
+				<td data-label="Qoutes">'.$row["quotes"].'</td>
 				<td data-label="Year">'.$row["year"].'</td>
         <td align="center">
                 <button class="button2 bGreen" style="border:1px solid;width:30px;">

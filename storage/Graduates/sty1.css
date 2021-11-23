@@ -288,7 +288,7 @@ only screen and
 .topButton{
   display: flex;
   justify-content: space-between;
-  margin-right: 10px;``
+  margin-right: 10px;
 }
 .add-btn-reg-ao, .add-btn-reg-a, .add-btn-reg-grad, .add-btn-m:hover{
   cursor: pointer;

@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="assets/base.css">
 <link rel="stylesheet" href="sty1.css">
 <link rel="shortcut icon" href="CvSU/logo-removebg.png">
-
+<script src="jquery-3.6.0.js"></script>
 <style>
 body{
   background-image: url("assets/tmp2.jpg");
