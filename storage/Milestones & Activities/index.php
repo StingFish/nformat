@@ -16,7 +16,7 @@
 <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="assets/base.css">
-<link rel="stylesheet" href="sty1.css">
+<link rel="stylesheet" href="style1.css">
 <link rel="shortcut icon" href="CvSU/logo-removebg.png">
 <script src="jquery-3.6.0.js"></script>
 <style>
@@ -79,7 +79,7 @@ body{
 <!-- start here -->
 <div class="search-container">
       <div class="topButton">
-        <button class="add-btn-m"><i class="fas fa-user-plus"></i>Add Milestones</button>
+        <button class="add-btn-m"><i class="fas fa-user-plus"></i></button>
         <div class="addMember-m">
             <form action="formFunction.php" method="post"  enctype="multipart/form-data">
                 <h2>Add Member</h2>
@@ -98,8 +98,8 @@ body{
             </form>
         </div>
         <div class="input-icons">
-          <input class="inp" type="text" placeholder="Search milestones by year" name="search-text" id="search_text_milestone">
-          <i class="fas fa-search"></i>
+          <input class="inp" type="text" placeholder="Search by year" name="search-text" id="search_text_milestone">
+          <i id="i"class="fas fa-search"></i>
         </div>
       </div>
       <br>
