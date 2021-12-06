@@ -87,7 +87,6 @@
     display: block;
   }
 }
-
 @media screen and (max-width: 600px) {
   .topnav.responsive {position: fixed;}
   .topnav.responsive .icon {
@@ -237,10 +236,15 @@ tfoot{
   position: sticky;
   bottom: 0;
 }
-/*Mobile View*/
+h6{
+  font-size: 20px;
+}
+
+
+
 @media
 only screen and
-    (max-width: 760px){
+  (max-width: 760px){
     td, tr {
         display: block;
         position: static;
@@ -288,7 +292,8 @@ only screen and
 .topButton{
   display: flex;
   justify-content: space-between;
-  margin-right: 10px;``
+  margin:0px 15px 0px 10px;
+
 }
 .add-btn-reg-ao, .add-btn-reg-a, .add-btn-reg-grad, .add-btn-m:hover{
   cursor: pointer;
@@ -403,4 +408,34 @@ h2{
   padding: 5px 10px 10px 5px;
   color: #fff;
   min-width: 40px;
+}
+/*Mobile View*/
+@media screen and (max-width: 786px){
+  .fa-user-plus:before{
+    content: "\f234";
+    font-size:30px;
+    /*background-color: red;*/
+  }
+  .add-btn-reg-ao, .add-btn-reg-a, .add-btn-reg-grad, .add-btn-m{
+    font-size: 10px;
+    border-radius: 5px;
+  }
+  .input-icons{
+    width:30%;
+  }
+}
+/*tablet view*/
+@media screen and (max-width: 900px){
+  .fa-user-plus:before{
+    content: "\f234";
+    font-size:30px;
+    /*background-color: red;*/
+  }
+  .add-btn-reg-ao, .add-btn-reg-a, .add-btn-reg-grad, .add-btn-m{
+    font-size: 10px;
+    border-radius: 5px;
+  }
+  .input-icons{
+    width:40%;
+  }
 }
