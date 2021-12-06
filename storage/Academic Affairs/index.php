@@ -78,7 +78,7 @@ body{
   <!--- Start here --->
   <div class="search-container">
     <div class="topButton">
-        <button class="add-btn-reg-a add-btn-r"><i class="fas fa-user-plus"></i>Add Member</button>
+        <button class="add-btn-reg-a add-btn-r"><i class="fas fa-user-plus"></i></button>
         <div class="addMember-reg-a">
             <form action="formFunction.php" class="form" method="post"  enctype="multipart/form-data">
                 <h2>Add Member</h2>
