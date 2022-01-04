@@ -3,7 +3,7 @@
 
     if(!isset($_SESSION['User']))
     {
-      echo "<script>alert('You must login first.');window.location='logout.php';</script>";
+    echo "<script>alert('You must login as Registrar first.');window.location='LC.php';</script>";
     }
     isset($_SESSION['User']);
 ?>

@@ -9,7 +9,7 @@ $email    = "";
 $errors = array();
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'yearbook');
+$db = mysqli_connect('localhost', 'root', '', 'yearbook_test');
 
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
@@ -61,54 +61,74 @@ if (isset($_POST['lc'])) {
   $username = mysqli_real_escape_string($db, $_POST['username']);
   $password = mysqli_real_escape_string($db, $_POST['password']);
 
-  if (empty($username)) {
-    array_push($errors, "Username is required");
+  if (empty($username) && empty($password)) {
+    array_push($errors, "School ID & Password is required");
   }
-  if (empty($password)) {
+  else if (empty($username)) {
+    array_push($errors, "School ID is required");
+  }
+  else if (empty($password)) {
     array_push($errors, "Password is required");
   }
 
   if (count($errors) == 0) {
     $password = md5($password);
-              $query = "SELECT * FROM confirmed WHERE Sid='$username' AND password='$password'";
+              $query = "SELECT * FROM tbl_accounts WHERE email='$username' AND password='$password'";
               $results=mysqli_query($db,$query);
               if (mysqli_num_rows($results) == 1) {
               $logged_in_user = mysqli_fetch_assoc($results);
-              if ($logged_in_user['usertype'] == 'Registrar') {
-                $_SESSION['User']=$username;
-                  $years = "SELECT year FROM confirmed WHERE Sid='$username'";
+              if ($logged_in_user['atype'] == 'R' || $logged_in_user['atype'] == 'r') {
+                if ($logged_in_user['is_disabled'] =='n'){
+                  $years = "SELECT * FROM tbl_accounts WHERE email='$username'";
                   $resulta=mysqli_query($db,$years);
                   $log = mysqli_fetch_assoc($resulta);
+                  $_SESSION['User']=$log['lname'];
                   $tot= $log['year'];
                    $_SESSION['Users']= $tot;
-                  echo "<script>alert('Registrar');window.location='storage.php';</script>";
-              }
-              else if ($logged_in_user['usertype'] == 'Admin') {
-                  $_SESSION['User2']=$username;
-                  $years = "SELECT year FROM confirmed WHERE Sid='$username'";
+                   header('Location: storage.php');
+                  }
+                  else{
+                  array_push($errors, "<script>alert('Your email has been disabled by the Administrator.');</script>");
+            }
+          }
+              if ($logged_in_user['atype'] == 'A' || $logged_in_user['atype'] == 'a'){
+                if ($logged_in_user['is_disabled'] =='n'){
+                  
+                  $years = "SELECT * FROM tbl_accounts WHERE email='$username'";
                   $resulta=mysqli_query($db,$years);
                   $log = mysqli_fetch_assoc($resulta);
+                  $_SESSION['User2']=$log['lname'];
+                  $_SESSION['User2.0']=$log['email'];
                   $tot= $log['year'];
                    $_SESSION['Users2']= $tot;
-                  echo "<script>alert('Admin');window.location='Reg.php';</script>";
+                  header('Location: admin.php');
+                }
+            else{
+                  array_push($errors, "<script>alert('Your email has been disabled by the Administrator.');</script>");
 
             }
-              else if ($logged_in_user['usertype'] == 'Student') {
-                  $_SESSION['User3']=$username;
-                  $years = "SELECT year FROM confirmed WHERE Sid='$username'";
+          }
+
+            if ($logged_in_user['atype'] == 'S' || $logged_in_user['atype'] == 's') {
+              if ($logged_in_user['is_disabled'] =='n'){
+                  
+                  $years = "SELECT * FROM tbl_accounts WHERE email='$username'";
                   $resulta=mysqli_query($db,$years);
                   $log = mysqli_fetch_assoc($resulta);
+                  $_SESSION['User3']=$username;
+                  $_SESSION['User3.0']=$log['email'];
                   $tot= $log['year'];
                    $_SESSION['Users3']= $tot;
-                  echo "<script>alert('Student');window.location='main.php';</script>";
+                  header('Location: template/menu.php');
               }
-              else{
-                  echo "<script>alert('Invalid');window.location='LC.php';</script>";
-              }
-         }else{
-          array_push($errors, "Email/Password doesn't exist or incorrect.");
-         }
+         else{
+                  array_push($errors, "<script>alert('Your email has been disabled by the Administrator.');</script>");
+            }
       }
+}else{
+  array_push($errors, "<script>alert('Your Email/Password is Incorrect or Invalid.');</script>");
+}
+}
 }
 
 if (isset($_POST['LA'])) {

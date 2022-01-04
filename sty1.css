@@ -1,3 +1,5 @@
+
+
 .topnav {
   overflow: hidden;
   background-color: #333;
@@ -206,30 +208,25 @@ h1{
     text-align: center;
     margin-bottom: 40px;
 }
-table { 
-    width: 80%; 
-    table-layout: fixed;
+table{ 
+    width: 50%; 
+    table-layout: auto;
     border-collapse: collapse; 
     margin: 0 auto;
+    word-break: normal;
 }
 /* Zebra striping */
 tr:nth-of-type(odd) { 
-    background: #f2f2f2; 
+    background: #f2f2f2;
 }
 tr:nth-of-type(even) { 
-    background: #f2f2f2; 
-}
-th { 
-    background: #0275d8; 
-    color: #fff; 
-    font-weight: 600; 
+    background: #f2f2f2;
 }
 tr:hover{
-  background-color: yellow;
+  background-color: white;
 }
 td, th { 
     padding: 12px; 
-    border: 1px solid #ccc; 
     text-align: left; 
     text-align: center
 }
@@ -242,10 +239,13 @@ tfoot{
 only screen and 
     (max-width: 760px){
     td, tr { 
+
         display: block; 
         position: static;
   }
-  
+  .pee{
+    float: center;
+  }
   /* Hide table headers (but not display: none;, for accessibility) */
   thead tr { 
     position: absolute;
@@ -254,10 +254,12 @@ only screen and
   }
 
   tr {
-        border: 1px solid #E74C3C; 
+        border: 1px solid;
+
     }
     tr + tr{
         margin-top: 1.5em;
+
     }
   td { 
     /* make like a "row" */
@@ -265,14 +267,13 @@ only screen and
     border-bottom: 1px solid #eee; 
     position: static;
     padding-left: 50%; 
-    background-color: #5bc0de;
-    text-align: left; 
+    background-color:none;
+    text-align: center;
   }
   td:before { 
         content: attr(data-label);
         display: inline-block;
         line-height: 1.5;
-      margin-left: -100%;
         width: 100%;
     white-space: nowrap;
   }

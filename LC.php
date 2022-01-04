@@ -1,3 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style2.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign In</title>
+  <style>
+      body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Jost', sans-serif;
+    transition: background-color .5s;
+  background-image: url("assets/tmp2.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.main{
+    width: 350px;
+    height: 500px;
+    background: red;
+    overflow: hidden;
+    background-color:#0275d8;
+    border-radius: 10px;
+    box-shadow: 5px 20px 50px #000;
+}
+#chk{
+    display: none;
+}
+.signup{
+    position: relative;
+    width:100%;
+    height: 100%;
+}
+label{
+    color: #fff;
+    font-size: 2.3em;
+    justify-content: center;
+    display: flex;
+    margin: 60px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .5s ease-in-out;
+}
+input{
+    width: 60%;
+    height: 20px;
+    background: #e0dede;
+    justify-content: center;
+    display: flex;
+    margin: 20px auto;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+button{
+    width: 60%;
+    height: 40px;
+    margin: 10px auto;
+    justify-content: center;
+    display: block;
+    color: #fff;
+    background: #573b8a;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: .2s ease-in;
+    cursor: pointer;
+}
+button:hover{
+    background: #6d44b8;
+}
+.login{
+    height: 460px;
+    background: #eee;
+    border-radius: 60% / 10%;
+    transform: translateY(-180px);
+    transition: .8s ease-in-out;
+}
+.login label{
+    color: #573b8a;
+    transform: scale(.6);
+}
+
+#chk:checked ~ .login{
+    transform: translateY(-500px);
+}
+#chk:checked ~ .login label{
+    transform: scale(1);    
+}
+#chk:checked ~ .signup label{
+    transform: scale(.6);
+}
+  </style>
+</head>
+<body>
+<!-- partial:index.partial.html -->
 <?php
  include ('server.php');
 if(isset($_SESSION['User'])) {
@@ -5,99 +113,44 @@ if(isset($_SESSION['User'])) {
      exit; // for good measure
 }
 if(isset($_SESSION['User2'])) {
-     header("Location: test.php"); // redirects them to homepage
+     header("Location: admin.php"); // redirects them to homepage
      exit; // for good measure
 }
 if(isset($_SESSION['User3'])) {
-     header("Location: main.php"); // redirects them to homepage
+     header("Location: template/menu.php"); // redirects them to homepage
      exit; // for good measure
 }
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login</title>
-  <link rel="stylesheet" href="styles/style1.css">
-  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-  <link rel="shortcut icon" href="styles/CvSU/logo.ico">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <style>
-.input-container {
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
-  width: 100%;
-  margin-bottom: 15px;
-}
-
-.icon {
-  padding: 10px;
-  background: dodgerblue;
-  color: white;
-  min-width: 50px;
-  text-align: center;
-}
-
-.input-field {
-  width: 100%;
-  padding: 10px;
-  outline: none;
-}
-
-.input-field:focus {
-  border: 2px solid dodgerblue;
-}
-
-/* Set a style for the submit button */
-.btn {
-  background-color: dodgerblue;
-  color: white;
-  padding: 15px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-
-.btn:hover {
-  opacity: 1;
-}
-</style>
+    <title>Slide Navbar</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="header">
-    <h2>Login</h2>
-  </div>
+    <div class="main">      
+        <input type="checkbox" id="chk" aria-hidden="true">
 
-  <form method="post" action="LC.php">
-    <?php include('errors.php') ?>
-    <div class="input-container">
-    <i class="fa fa-address-card icon"></i>
-    <input class="input-field" type="number" placeholder="School ID" name="username" value="<?php echo $username; ?>">
-  </div>
+            <div class="signup">
+                <form action="LC.php">
+                    
+                    <img src="CvSU/logo-removebg.png" style="padding: 10px 15px; margin-top:40px">
+                </form>
+            </div>
 
-  <div class="input-container">
-    <i class="fa fa-key icon"></i>
-    <input class="input-field" type="password" placeholder="Password" name="password" id="myInput">
-  </div>
-    <div style="font-size: 15px;">
-      <input type="checkbox" onclick="myFunc()" style="width:20px;">Show Password
-    </div><br>
-    <div class="input-group">
-      <button class="button button1" name="lc">Login</button>
+            <div class="login">
+                <form action="LC.php" method="post">
+                    
+                    <label for="chk" aria-hidden="true" style="color:#0275d8;">Sign in</label>
+                    <input type="email" name="username" placeholder="email" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button name="lc" style="background-color:#0275d8;">Login</button>
+                </form>
+            </div>
     </div>
-  </form>
 </body>
 </html>
-
-<script>
-function myFunc() {
-  var x = document.getElementById("myInput");
-  if (x.type === "password") {
-    x.type = "text";
-  } else {
-    x.type = "password";
-  }
-}
-</script>
+<!-- partial -->
+  
+</body>
+</html>

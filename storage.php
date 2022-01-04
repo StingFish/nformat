@@ -3,7 +3,7 @@
 
     if(!isset($_SESSION['User']))
     {
-      echo "<script>alert('You must login first.');window.location='logout.php';</script>";
+      echo "<script>alert('You must login as Registrar first.');window.location='LC.php';</script>";
     }
     isset($_SESSION['User']);
 
@@ -20,14 +20,11 @@
 <link rel="stylesheet" href="sty1.css">
 <link rel="shortcut icon" href="styles/CvSU/logo-removebg.png">
 <script src="styles/js/jquery-3.6.0.js"></script>
-<script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
 body{
   transition: background-color .5s;
-  background-image: url("assets/bg2.gif");
+  background-image: url("assets/tmp2.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -45,7 +42,6 @@ th, td {
 }
 tr:nth-child(odd){background-color: #f2f2f2}
 tr:nth-child(even){background-color: #f2f2f2}
-tr:hover {background-color: yellow;}
 
 th {
   background-color: #04AA6D;
@@ -196,6 +192,11 @@ hov:hover{
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+@media screen and (max-width: 490px) {
+  td{text-align: center;}
+  td img{margin-left: 50px;margin-top:0px;}
+  td p{margin-left: 20px;width: 100%;}
+}
 
 .button {
   background-color: #4CAF50; /* Green */
@@ -223,12 +224,12 @@ hov:hover{
 }
 </style>
 </head>
-<body>
+<body style="overflow-y: auto;">
 <header>
   <?php
-  $db=mysqli_connect('localhost','root','','yearbook');
+  $db=mysqli_connect('localhost','root','','yearbook_test');
   $goo= $_SESSION['User'];
-         $user_check_query = "SELECT * FROM confirmed WHERE Sid='$goo'";
+         $user_check_query = "SELECT * FROM tbl_accounts WHERE lname='$goo'";
          $result = mysqli_query($db, $user_check_query);
   ?>
   <div id="mySidenav" class="sidenav">
@@ -237,7 +238,7 @@ hov:hover{
     while ($row = mysqli_fetch_array($result)){
     echo '<center><img src="CvSU/logo-removebg.png" style="width:80%;margin-left:0px;border-radius:50%;"></center>';
  
-  echo "<center><p style='margin-left:-10px;color:white;'>".$row['fname']." ".$row['lname']."</p></center>";
+  echo "<center><p style='margin-left:-10px;color:white;'>".$row['fname']." ".$row['mname']." ".$row['lname']."</p><p>".$row['email']."</p></center>";
    }
   ?>
   <form action="logout.php"> 
@@ -254,31 +255,55 @@ hov:hover{
 <section>
 <br>
 <br>
-<div class="yb-php">
-  <div style="float:left;">
-    <form action="" method="get">
+<br>
 
-     <?php
-  $db=mysqli_connect('localhost','root','','filepaths');
-  $goo= 2021;
-         $user_check_query = "SELECT * FROM front ORDER BY filename";
-         $result = mysqli_query($db, $user_check_query);
-
-         while ($row = mysqli_fetch_array($result)){
-            echo "<div class='container' style='float:left;'>";
-            echo "<div class='imgBx' style='border:none;'>";
-            echo '<a href="storage/'.$row["filename"].'/path.php"><img name="nooo" class="pic" src="CvSU/blue.png" style="width:280px;margin-left:20px;"/></a>';
-            
-            echo "<div class='contentt' style='margin-top: -30px;color:black;'>";
-            echo "<center>".$row["filename"]."</center>";
-            echo "</div>";
-            echo "</div>";
-            echo "</div>";
-      }
-  ?>
+<div class="yb-php" style="margin: 10px">
+  <div class="container">
+  <center><p style="  -webkit-backface-visibility: hidden;color: darkblue;font-weight: bolder;font-size: 45px;margin: 0;font-family: 'Oswald', sans-serif;">What's inside of it?</p></center>
+  <br>
+</div>
+  <form>
+    <table id="wrapper">
+    <thead>
+    <tr>
+      <th style="display: none;">Head 1</th>
+      <th style="display: none;">Head 2</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr onclick="window.location='storage/Employees Database/path.php';">
+      <td  style="width:20%; padding: -10 -10px ;">
+          <center>
+          <div class='imgBx' style='border:none;'>
+          <img src="CvSU/blue.png" style="width:200px;"></center></td>
+      <td style="width:80%;"><b>Employee's Database</b><br><p>This is the place where you can input employee's profile and information. This is where the data of Academic Affairs and Administrative Officers. It contains critical information, such as each employee's personal information, It holds a variety of employee personnel fields such as name, age, job position, and year for the presentation of digital yearbook and the information are easily added by the registrars.</p></td>
+    </tr> 
+</div>
+    <tr onclick="window.location='storage/Students Database/path.php';">
+      <td  style="width:20%">
+          <center>
+          <div class='imgBx' style='border:none;'>
+          <img src="CvSU/blue.png" style="width:200px;"></center></td>
+      <td style="width:80%;"><b>Students Database</b><br><p>This is the place where you can input students profile and information. It contains basic information including student ID, full name, quotations, year, and contact information. This database is linked to all of the student's school preferences and the information are easily added by the registrars.</p></td>
+    </tr>
+    <tr onclick="window.location='storage/Milestones & Activities/path.php';">
+      <td  style="width:20%">
+          <center>
+          <div class='imgBx' style='border:none;'>
+          <img src="CvSU/blue.png" style="width:200px;"></center></td>
+      <td style="width:80%;"><b>Milestones Database</b><br><p>This is the place where you can input pictures of every batch. This is where you can add desciptions to post memorable things in digital yearbook.</p></td>
+    </tr>
+    <tr onclick="window.location='storage/Milestones & Activities/path.php';">
+      <td  style="width:20%">
+          <center>
+          <div class='imgBx' style='border:none;'>
+          <img src="CvSU/blue.png" style="width:200px;"></center></td>
+      <td style="width:80%;"><b>Yearbook Database</b><br><p>This is the place where you can see the overall inputs from the databases. It contains data added from Administrative Officers, Academic Affairs, and Graduate students.</p></td>
+    </tr>
+  </tbody>
+  </table>
 </form>
 </div>
-   </div>
 </section>
 </body>
 </html>
