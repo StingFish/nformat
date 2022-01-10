@@ -190,17 +190,115 @@ a.float:hover + div.label-container{
   visibility: visible;
   opacity: 1;
 }
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg:hover {
+  opacity: 0.7;
+}
+
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 100px;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.9);
+  /* Black w/ opacity */
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  height: 80%;
+  max-height: 700px;
+}
+
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+.modal-content,
+#caption {
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(0)
+  }
+  to {
+    transform: scale(1)
+  }
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+  .modal-content {
+    width: 100%;
+  }
+}
 </style>
 </head>
 
 <body>
 <!-- partial:index.partial.html -->
-<!-- =============================== Start Slider =============================== -->
+<!-- =============================== Start Slider =============================== --> <?php 
+                $db=mysqli_connect('localhost','root','','tests');
+                $goo= $_SESSION['Users3'];
+                $get = "SELECT * FROM tbl_addons WHERE addon_year = '$goo'";
+                $fet = mysqli_query($db, $get);
+                while ($fetch = mysqli_fetch_array($fet)){
+            ?>
         <div class="wowslider section">
+           
             <ul> 
+
                 <li class="wow pulse wowactive" style="overflow-y: scroll;overflow-x: hidden;"> <!--- Milestones --->
                 <h2 class="wow fadeInDown board"style="font-family: 'Dancing Script', cursive; font-size: 50px; margin-top: 0;">- Milestones & Activities -</h2>
-                    <div class="wow fadeIn yb-php2" style="background:none">
+                    <div class="wow fadeIn" style="background:none">
                 <?php 
                     $db=mysqli_connect('localhost','root','','yearbook');
                 $goo= $_SESSION['Users3'];
@@ -208,66 +306,64 @@ a.float:hover + div.label-container{
                 $result = mysqli_query($db, $user_check_query);
 
                 while ($row = mysqli_fetch_array($result)){
-                echo '<div id="lb-back">
-                        <div id="lb-img"></div>
-                    </div>
+                echo '<img class="myImages"  id="myImg" src="data:image/jpeg;base64,'.base64_encode($row['image1']).'" alt="'.$row['description'].'" style="width:100%;max-width:300px;"><br>
+                
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>';
+}
+                ?>
+<script>
+// create references to the modal...
+var modal = document.getElementById('myModal');
+// to all images -- note I'm using a class!
+var images = document.getElementsByClassName('myImages');
+// the image in the modal
+var modalImg = document.getElementById("img01");
+// and the caption in the modal
+var captionText = document.getElementById("caption");
 
-                    <!-- [THE IMAGES] -->
-                    <img src="data:image/jpeg;base64,'.base64_encode($row['image1'] ).'" class="zoomD"/><br>
-                    <script>
-                    var zoomImg = function () {
-  // (A) CREATE EVIL IMAGE CLONE
-  var clone = this.cloneNode();
-  clone.classList.remove("zoomD");
-
-  // (B) PUT EVIL CLONE INTO LIGHTBOX
-  var lb = document.getElementById("lb-img");
-  lb.innerHTML = "";
-  lb.appendChild(clone);
-
-  // (C) SHOW LIGHTBOX
-  lb = document.getElementById("lb-back");
-  lb.classList.add("show");
-};
-
-window.addEventListener("load", function(){
-  // (D) ATTACH ON CLICK EVENTS TO ALL .ZOOMD IMAGES
-  var images = document.getElementsByClassName("zoomD");
-  if (images.length>0) {
-    for (var img of images) {
-      img.addEventListener("click", zoomImg);
-    }
+// Go through all of the images with our custom class
+for (var i = 0; i < images.length; i++) {
+  var img = images[i];
+  // and attach our click listener for this image.
+  img.onclick = function(evt) {
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
   }
+}
 
-  // (E) CLICK EVENT TO HIDE THE LIGHTBOX
-  document.getElementById("lb-back").addEventListener("click", function(){
-    this.classList.remove("show");
-  })
-});
-</script>'; 
-                 } 
-                 ?>
-                 <script> $(document).ready(function(){ var zoomImages = $('.zoom-images'); zoomImages.each(function() { $(this).imageZoom(); }); }); </script>
+var span = document.getElementsByClassName("close")[0];
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+</script>
+
+            
                 </div>
                 </li>
                 <li class="wow pulse" style="overflow-y: scroll;overflow-x: hidden;"> <!--- Administrative --->
                     <h2 class="wow fadeInUp board" style="font-family: 'Dancing Script', cursive; font-size: 50px; margin-top: 0;">- The Graduates -</h2>
    <div class="wow fadeInLeft yb-php2" style="background:none">
   <?php 
-  $db=mysqli_connect('localhost','root','','yearbook');
+  $db=mysqli_connect('localhost', 'root', '', 'tests');
   $goo= $_SESSION['Users3'];
-         $user_check_query = "SELECT * FROM shs WHERE year='$goo' ORDER BY lname";
+         $user_check_query = "SELECT tbl_accounts.profile_image, tbl_sybook.slname, tbl_sybook.smname, tbl_sybook.sfname, tbl_sybook.quotes, tbl_sybook.school_year FROM tbl_sybook JOIN tbl_students ON tbl_students.sid=tbl_sybook.sid JOIN tbl_accounts on tbl_accounts.email=tbl_students.email WHERE school_year='$goo' ORDER BY slname";
          $result = mysqli_query($db, $user_check_query);
 
          while ($row = mysqli_fetch_array($result)){
            echo "<div class='container'>";
             echo "<div class='card' style='height:350px;'>";
             echo "<div class='imgBx'>";
-            echo '<img class="pic" src="data:image/jpeg;base64,'.base64_encode($row['image'] ).'"/>';
-            echo '<img  class="picbig" src="data:image/jpeg;base64,'.base64_encode($row['image'] ).'"/>';
+            echo '<img class="pic" src="data:image/jpeg;base64,'.base64_encode($row['profile_image'] ).'"/>';
+            echo '<img  class="picbig" src="data:image/jpeg;base64,'.base64_encode($row['profile_image'] ).'"/>';
             echo "</div>";
             echo "<div class='contentt'>";
-            echo "<h2 class='unselectable' style='font-family: Oswald;'>".$row['fname']."&nbsp;".$row['mname']."&nbsp;".$row['lname']."</h2>";
+            echo "<h2 class='unselectable' style='font-family: Oswald;'>".$row['sfname']."&nbsp;".$row['smname']."&nbsp;".$row['slname']."</h2>";
             echo "<p style='font-family: Oswald;'>&#10075;&#10075;".$row['quotes']."."."&#10076;&#10076;</p>";
             echo "</div>";
             echo "</div>";
@@ -280,21 +376,21 @@ window.addEventListener("load", function(){
                     <h2 class="wow fadeInUp board" style="font-family: 'Dancing Script', cursive; font-size: 50px; margin-top: 0;">- Academic Affairs -</h2>
    <div class="wow fadeInUp yb-php2" style="background:none">
   <?php 
-  $db=mysqli_connect('localhost','root','','yearbook');
+  $db=mysqli_connect('localhost','root','','tests');
   $goo= $_SESSION['Users3'];
-         $user_check_query = "SELECT * FROM tab3 WHERE year='$goo' ORDER BY lname";
+         $user_check_query = "SELECT tbl_accounts.profile_image, tbl_eybook.elname, tbl_eybook.emname, tbl_eybook.efname, tbl_eybook.work_status, tbl_eybook.department, tbl_eybook.employee_year FROM tbl_eybook JOIN tbl_employees ON tbl_employees.eid=tbl_eybook.eid JOIN tbl_accounts on tbl_accounts.email=tbl_employees.email WHERE employee_year='$goo' AND department='Academic Affairs' ORDER BY elname";
          $result = mysqli_query($db, $user_check_query);
 
          while ($row = mysqli_fetch_array($result)){
             echo "<div class='container'>";
             echo "<div class='card' style='height:350px;'>";
             echo "<div class='imgBx'>";
-            echo '<img class="pic" src="data:image/jpeg;base64,'.base64_encode($row['image1'] ).'"/>';
-            echo '<img class="picbig" src="data:image/jpeg;base64,'.base64_encode($row['image1'] ).'"/>';
+            echo '<img class="pic" src="data:image/jpeg;base64,'.base64_encode($row['profile_image'] ).'"/>';
+            echo '<img class="picbig" src="data:image/jpeg;base64,'.base64_encode($row['profile_image'] ).'"/>';
             echo "</div>";
-            echo "<div class='contentt'>";
-            echo "<h2 style='margin-top:0;'>".$row['fname']."&nbsp;".$row['mname']."&nbsp;".$row['lname']."</h2>";
-            echo $row['position'];
+            echo "<div class='contentt' style='font-family: Oswald'>";
+            echo "<h2 style='margin-top:0;font-family: Oswald;'>".$row['efname']."&nbsp;".$row['emname']."&nbsp;".$row['elname']."</h2>";
+            echo $row['work_status'];
             echo "</div>";
             echo "</div>";
             echo "</div>";
@@ -306,21 +402,21 @@ window.addEventListener("load", function(){
                     <h2 class="wow fadeInUp board" style="font-family: 'Dancing Script', cursive; font-size: 50px; margin-top: 0;">- Administrative Officers -</h2>
    <div class="wow zoomIn yb-php2" style="background:none">
   <?php 
-  $db=mysqli_connect('localhost','root','','yearbook');
+  $db=mysqli_connect('localhost', 'root', '', 'tests');
   $goo= $_SESSION['Users3'];
-         $user_check_query = "SELECT * FROM tab2 WHERE year='$goo' ORDER BY lname";
+         $user_check_query = "SELECT tbl_accounts.profile_image, tbl_eybook.elname, tbl_eybook.emname, tbl_eybook.efname, tbl_eybook.work_status, tbl_eybook.department, tbl_eybook.employee_year FROM tbl_eybook JOIN tbl_employees ON tbl_employees.eid=tbl_eybook.eid JOIN tbl_accounts on tbl_accounts.email=tbl_employees.email WHERE employee_year='$goo' AND department='Administrative Officers' ORDER BY elname";
          $result = mysqli_query($db, $user_check_query);
 
          while ($row = mysqli_fetch_array($result)){
             echo "<div class='container'>";
             echo "<div class='card' style='height:350px;'>";
             echo "<div class='imgBx'>";
-            echo '<img class="pic" src="data:image/jpeg;base64,'.base64_encode($row['image1'] ).'"/>';
-            echo '<img class="picbig" src="data:image/jpeg;base64,'.base64_encode($row['image1'] ).'"/>';
+            echo '<img class="pic" src="data:image/jpeg;base64,'.base64_encode($row['profile_image'] ).'"/>';
+            echo '<img class="picbig" src="data:image/jpeg;base64,'.base64_encode($row['profile_image'] ).'"/>';
             echo "</div>";
-            echo "<div class='contentt'>";
-            echo "<h2 style='margin-top:0;'>".$row['fname']."&nbsp;".$row['mname']."&nbsp;".$row['lname']."</h2>";
-            echo $row['position'];
+            echo "<div class='contentt'  style='font-family: Oswald;'>";
+            echo "<h2 style='margin-top:0;font-family: Oswald;'>".$row['efname']."&nbsp;".$row['emname']."&nbsp;".$row['elname']."</h2>";
+            echo $row['work_status'];
             echo "</div>";
             echo "</div>";
             echo "</div>";
@@ -330,10 +426,14 @@ window.addEventListener("load", function(){
                 </li>
                     <li class="wow pulse"> <!--- Message --->
                     
-                            <div class="yb-php" style="background:none;overflow-y: scroll;overflow-x: hidden;" id="text2">
-                            <center><img class="wow fadeInDown imahe" src="CvSU/message.jpg" style="width:80%;height: 100%;"></center>
+                            <?php
+                        echo "<div class='yb-php' style='background:none;overflow-y: scroll;overflow-x: hidden;' id='text2'>";
+                        echo '<center><img class="wow fadeInDown imahe" src="data:image/jpeg;base64,'.base64_encode($fetch["messages"]).'" style="width:80%;height: 100%;"></center>
+                        </div>';
+
+                            ?>
                         
-                    </div>
+                    
                 </li>
                 <li class="wow pulse" style="overflow-y: scroll;overflow-x: hidden;"> <!--- Vision --->
                     <div class="overlay">
@@ -359,7 +459,7 @@ window.addEventListener("load", function(){
                 <li class="wow pulse"> <!--- Title --->
                     <div class="overlay">
                         <div class="text">
-                            <center><strong><h2 class="wow zoomIn" data-wow-delay=".2s" style="font-family:Oswald;">KABATAAN:<br>ANG PAG-ASA NG BAYAN</h2></strong></center>
+                            <center><strong><h2 class="wow zoomIn" data-wow-delay=".2s" style="font-family:Oswald;"><?php echo $fetch['front_title'];?></h2></strong></center>
                         </div>
                     </div>
                 </li>
@@ -385,6 +485,9 @@ window.addEventListener("load", function(){
                     <div class="image"></div>
                 </div>
             </div>
+            <?php 
+        }
+            ?>
         </div>
         <!-- =============================== End Slider =============================== -->
 <!-- partial -->

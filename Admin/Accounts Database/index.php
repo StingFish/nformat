@@ -1,5 +1,5 @@
 <?php
-include ('formFunction.php');
+include ('connect.php');
 
     if(!isset($_SESSION['User2']))
     {
@@ -299,7 +299,7 @@ a.float:hover + div.label-container{
 </head>
 <body>
 <?php
-        $db = mysqli_connect('localhost', 'root', '', 'yearbook_test');
+        $db = mysqli_connect('localhost', 'root', '', 'tests');
         $year = date("Y");
         $sql = "SELECT * FROM tbl_accounts ORDER BY email";
         $result = mysqli_query($db,$sql);
@@ -339,7 +339,7 @@ a.float:hover + div.label-container{
 <br>
 
 
-<a href="#" class="float add-btn-reg-a">
+<a href="edit.php" class="float add-btn-reg-a">
 <i class="my-float" style="font-family: Oswald;font-size: 40px;font-style: normal;font-weight: bold;">+</i>
 </a>
 <div class="label-container">
@@ -353,113 +353,22 @@ a.float:hover + div.label-container{
       <div>
       
         <button class="add-btn-reg-a add-btn-r" style="display:none;margin-top: -100px;">Add Member</button>
-        <div class="addMember-reg-a">
+        <div class="addMember-reg-a" style="display:none">
             
-            <form action="index.php" class="form me" method="post" enctype="multipart/form-data" style="overflow-y:scroll;">
+            <form action="" class="form me" method="post" enctype="multipart/form-data" style="overflow-y:scroll;">
                 <h2 style="margin:-10px">Add Account</h2>
-                <?php include ('errors.php');?>
                 
-                <div class="inputField">
-                <h6 style="margin-bottom: -10px;margin-top: 15px;">Select Image</h6>
-
-                <input type="file" style="width: 90%;height: 20px;background: #e0dede;justify-content: center;display: flex;margin: 20px auto;padding: 10px;border: none;outline: none;border-radius: 5px;" name="f1" placeholder="First Name" required>
-
-                <input type="email" name="mail" style="width: 90%;height: 20px;background: #e0dede;justify-content: center;display: flex;margin: 20px auto;padding: 10px;border: none;outline: none;border-radius: 5px;" value="<?php echo $email;?>" placeholder="Email Account" required>
-
-                <textarea type="password" id="pw" name="psw" placeholder="Password" style="font-family: 'Arial';font-size: 14px;resize: none;width: 90%;height: 20px;background: #e0dede;justify-content: center;display: flex;margin: 20px auto;padding: 10px;border: none;outline: none;border-radius: 5px;pointer-events: none;" required></textarea>
-
-                <input id="len" value="16" type="number" min="8" max="30" style="display:none;"> 
-                <input id="upper" type="checkbox" style="display:none;" checked>  
-                <input id="lower" type="checkbox" style="display:none;" checked>  
-                <input id="number" type="checkbox" style="display:none;" checked>  
-               <input id="symbol" type="checkbox" style="display:none;" > 
-
-                <center>
-                <span class="button button2" id="generate" style="width:80%;height:10px;">Generate Password</span>
-              </center> 
-              <script>
-                 var number = document.getElementById('pw');
-        number.onkeydown = function(e) {
-        if(((e.keyCode > 95 && e.keyCode < 106)
-         || (e.keyCode > 47 && e.keyCode < 58)
-         || (e.keyCode > 64 && e.keyCode < 91)
-         || (e.keyCode > 7 && e.keyCode < 47)
-         || (e.keyCode > 105 && e.keyCode < 223)
-         || e.keyCode == 8)) {
-         return false;
-          }
-        }
-              </script>
-              <script src="index.js"></script>
-
-                <input type="text" name="Fname" style="width: 90%;height: 20px;background: #e0dede;justify-content: center;display: flex;margin: 20px auto;padding: 10px;border: none;outline: none;border-radius: 5px;" placeholder="First Name" value="<?php echo $first;?>" required>
-               
-                <input type="text" name="Mname" style="width: 90%;height: 20px;background: #e0dede;justify-content: center;display: flex;margin: 20px auto;padding: 10px;border: none;outline: none;border-radius: 5px;" placeholder="Middle Name" maxlength="4" value="<?php echo $mid;?>" required>
- 
-                <input type="text" name="Lname" style="width: 90%;height: 20px;background: #e0dede;justify-content: center;display: flex;margin: 20px auto;padding: 10px;border: none;outline: none;border-radius: 5px;" placeholder="Last Name" value="<?php echo $last;?>" required>
-
-                <input type="text" name="addr" style="width: 90%;height: 20px;background: #e0dede;justify-content: center;display: flex;margin: 20px auto;padding: 10px;border: none;outline: none;border-radius: 5px;" placeholder="Address" value="<?php echo $location;?>" required>
-
-                <input type="number" id="num" name="contact" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" style="width: 90%;height: 20px;background: #e0dede;justify-content: center;display: flex;margin: 20px auto;padding: 10px;border: none;outline: none;border-radius: 5px;" placeholder="Contact No." value="<?php echo $con;?>" maxlength="11" min="09000000000" required>
-
-                <input type="tel" id="lan" name="mobile" style="width: 90%;height: 20px;background: #e0dede;justify-content: center;display: flex;margin: 20px auto;padding: 10px;border: none;outline: none;border-radius: 5px;" value="<?php echo $tel;?>" placeholder="Landline No. (XXX-XXXX)" pattern="[0-9]{3}-[0-9]{4}" required>
-
-                <input type="number" name="yrr" id="num" style="width: 90%;height: 20px;background: #e0dede;justify-content: center;display: flex;margin: 20px auto;padding: 10px;border: none;outline: none;border-radius: 5px;" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $yerr;?>" max="<?php echo $year;?>" placeholder="Batch Year" min="2018" maxlength="4" required>
-                <script>
-                  var number = document.getElementById('num');
-        number.onkeydown = function(e) {
-        if(!((e.keyCode > 95 && e.keyCode < 106)
-         || (e.keyCode > 47 && e.keyCode < 58) 
-         || e.keyCode == 8)) {
-         return false;
-          }
-        }
-                </script>
-                <select name="status" id ="combo" style="width: 100%;height: 40px;background: #e0dede;justify-content: center;display: flex;margin: 20px auto;padding: 10px;border: none;outline: none;border-radius: 5px;">
-                <option value="0">Please choose..</option>
-                <option  value="Employee">Employee</option>
-                <option  value="Student">Student</option>
-                </select>
-
-                <input type="text" id="aa" name="eids" style="width: 90%;height: 20px;background: #e0dede;justify-content: center;display: flex;margin: 20px auto;padding: 10px;border: none;outline: none;border-radius: 5px;" placeholder="Employee ID" onkeyup="this.value = this.value.toUpperCase();" value="<?php echo $eid;?>" required>
-
-                <input type="text" id="aa" name="acc" style="width: 90%;height: 20px;background: #e0dede;justify-content: center;display: flex;margin: 20px auto;padding: 10px;border: none;outline: none;border-radius: 5px;" placeholder="Account Type (A/R)" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" onkeypress="return /[a&r]/i.test(event.key)" onkeyup="this.value = this.value.toUpperCase();" maxlength="1" value="<?php echo $eid;?>" required>
-
-                <input type="text" id="bb" name="sids" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" style="width: 90%;height: 20px;background: #e0dede;justify-content: center;display: flex;margin: 20px auto;padding: 10px;border: none;outline: none;border-radius: 5px;" placeholder="Student ID" value="<?php echo $sid;?>" maxlength="9" required>
-
-                <input type="text" id="bb" name="course" style="width: 90%;height: 20px;background: #e0dede;justify-content: center;display: flex;margin: 20px auto;padding: 10px;border: none;outline: none;border-radius: 5px;" placeholder="Course (if Student)" value="<?php echo $cour;?>" maxlength="9" required>
-
-                <script>
-                  $(document).ready(function () {
-    var $input = $('input[id=bb]');
-    $input.attr('disabled', 'disabled');
-    $('select[name=status]').on('change', function () {
-        $input.attr('disabled', $(this).val() != "Student");
-    });
-});
-
-$(document).ready(function () {
-    var $input = $('input[id=aa]');
-    $input.attr('disabled', 'disabled');
-    $('select[name=status]').on('change', function () {
-        $input.attr('disabled', $(this).val() != "Employee");
-    });
-});
-                </script>
-                <input type="text" name="dis" style="width: 90%;height: 20px;background: #e0dede;justify-content: center;display: flex;margin: 20px auto;padding: 10px;border: none;outline: none;border-radius: 5px;" placeholder="is Disabled?(Y/N)" value="<?php echo $dist;?>" maxlength="1" onkeypress="return /[n&y]/i.test(event.key)" required>
-
                 <center>
                 <button class="button button2" type="submit" name="submit3"  style="width:45%;height:50px;">ADD</button>
                 <!--<input type="submit" name="submit1" class="button button1" value="Add">-->
                 <a href="index.php"><button class="cancel-btn-reg-a button button2"  style="width:45%;height:50px;">CANCEL</button></a></center><br>
-              </div>
+             
             </form>
         </div>
         <div class="input-icons">
           
         </div>
     </div>
-      <br>
       
       <div id="result_affair" style="margin-top: -70px;"></div>
   </div>

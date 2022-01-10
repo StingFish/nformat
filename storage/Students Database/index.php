@@ -1,4 +1,4 @@
-  <?php
+<?php
     session_start();
 
     if(!isset($_SESSION['User']))
@@ -265,31 +265,46 @@ a.float:hover + div.label-container{
   visibility: visible;
   opacity: 1;
 }
+
+@media only screen and (max-width: 999px) {
+    .me{
+        width: 40%;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .me{
+        width: 80%;
+    }
+}
+  .buttons {
+width: 40%;
+margin: 0 auto;
+display: inline;
+}
+
+    .action_btn {
+width: 40%;
+margin: 0 auto;
+display: inline;
+}
 </style>
 </head>
 <body>
 <?php
-        $db = mysqli_connect('localhost', 'root', '', 'yearbook');
+        $db = mysqli_connect('localhost', 'root', '', 'tests');
         $year = date("Y");
-
-        if (isset($_GET['call'])) {
-        $Ys= mysqli_real_escape_string($db, $_GET['call']);
-
-        $sql = "SELECT * FROM shs WHERE year='$Ys' ORDER BY lname";
-        $result = mysqli_query($db,$sql);
-        $rows = mysqli_num_rows($result);
-      }
         ?>
+
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <?php
   $goo= $_SESSION['User'];
-    $user_check_query = "SELECT * FROM confirmed WHERE Sid='$goo'";
+    $user_check_query = "SELECT * FROM tbl_accounts WHERE lname='$goo'";
          $res = mysqli_query($db, $user_check_query);
     while ($rows = mysqli_fetch_array($res)){
     echo '<center><img src="CvSU/logo-removebg.png" style="width:80%;margin-left:0px;border-radius:50%;"></center>';
  
-  echo "<center><p style='margin-left:-10px;color:white;'>".$rows['fname']." ".$rows['lname']."</p></center>";
+ echo "<center><p style='margin-left:-10px;color:white;'>".$rows['fname']." ".$rows['mname']." ".$rows['lname']."</p><p>".$rows['email']."</p></center>";
    }
   ?>
   <form action="../../storage.php"> 
@@ -305,89 +320,90 @@ a.float:hover + div.label-container{
   <a href="javascript:void(0);" onclick="openNav()"><img src="CvSU/logo-removebg.png" alt="logo" class="logo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $_SESSION['User']; ?></i></a>
 </div>
 <div>
-  <center><input class="inp" type="text" placeholder="Search by name" name="search-text" style="width:50%;background-position: 10px 10px;padding: 10px 20px 10px 35px;margin-bottom: 5px;margin-top: 5px;" id="search_text_graduates"></center>
+  <center><input class="inp" type="text" placeholder="Search by name" name="search-text" style="width:50%;background-position: 10px 10px;padding: 10px 20px 10px 35px;margin-bottom: 5px;margin-top: 5px;" id="search_text_affair"></center>
 </div>
 </div>
 <br>
 <br>
 <br>
-<!--- Start here --->
-<div class="search-container">
-  <div>
-      <button class="add-btn-reg-grad" style="display:none;margin-top: -100px;">Add Graduate</button>
-      <div class="addMember-reg-grad">
-          <form action="formFunction.php" method="post"  enctype="multipart/form-data">
-              <h2>Add Member</h2>
 
-              <div class="inputField">
-              <p>Select Image</p>
-              <input type="file" name="f1" required>
 
-              <p>Firstname</p>
-              <input type="text" name="Fname"required><br>
+  <!--- Start here --->
+  <div class="search-container">
+    <div>
+        <a href="#" class="float add-btn-reg-a" style="display:none;">
+<i class="my-float" style="font-family: Oswald;font-size: 40px;font-style: normal;font-weight: bold;">+</i>
+</a>
+<div class="label-container">
+<div class="label-text">Add</div>
+<i class="fa label-arrow"></i>
+</div>
+        <div class="addMember-reg-a">
+            <form action="#" class="me form" method="post"  enctype="multipart/form-data" style="overflow-y:scroll;">
+                
 
-              <p>Middle Initial</p>
-              <input type="text" name="Mname" maxlength="4" required><br>
+            <center><div class="action_btn">
 
-              <p>Lastname</p>
-              <input type="text" name="Lname"required><br>
+            <button name="submit" class="action_btn submit" type="submit" value="Save" style="background-color:green;margin-right: 5px;padding: 10px 10px;" onclick="myFunction()">Save</button>
 
-              <p>Year</p>
-              <input type="text" name="year" maxlength="4" required><br>
+            <button name="submit" class="action_btn cancel cancel-btn-reg-a" type="submit" style="background-color:green;padding: 10px 10px;"  value="Cancel" onclick="myFunction2()">Cancel</button>
 
-              <button class="button button1" type="submit" name="submit3" >ADD</button>
-              <!--<input type="submit" name="submit1" class="button button1" value="Add">-->
-              <button class="cancel-btn-reg-grad button">CANCEL</button>
-            </div>
-          </form>
-      </div>
-      <div class="input-icons">
-      </div>
+            <p id="saved"></p>
+
+            </div></center>
+
+        </div>
+              </div>
+            </form>
+        </div>
+        <div class="input-icons">
+          
+        </div>
+    </div>
+      <br>
+      
+      <div id="result_affair" style="margin-top: -70px;"></div>
   </div>
-    <br>
-    <div id="result_graduates" style="margin-top: -70px;"></div>
-</div>
-
-
+<!-- end here -->
 <script>
 $(document).ready(function(){
-      let addButtonGrad = document.querySelector('.add-btn-reg-grad');
-      let addMemberGrad = document.querySelector('.addMember-reg-grad');
-      let cancelButtonGrad = document.querySelector('.cancel-btn-reg-grad');
+      let addButtonRegA = document.querySelector('.add-btn-reg-a');
+      let addMemberRegA = document.querySelector('.addMember-reg-a');
+      let cancelButtonRegA = document.querySelector('.cancel-btn-reg-a');
 
-      addButtonGrad.addEventListener('click', function(){
-          addMemberGrad.classList.add('form-active');
+      addButtonRegA.addEventListener('click', function(){
+          addMemberRegA.classList.add('form-active');
       });
-      cancelButtonGrad.addEventListener('click', function(){
-          addMemberGrad.classList.remove('form-active');
+      cancelButtonRegA.addEventListener('click', function(){
+          addMemberRegA.classList.remove('form-active');
       });
 
       load_data();
-      function load_data(graduates_query)
-      {
-        $.ajax({
-          url:"regGraduateFetch.php",
-          method:"post",
-          data:{graduates_query:graduates_query},
-          success:function(data)
-          {
-            $('#result_graduates').html(data);
-          }
-        });
-      }
+            function load_data(affair_query)
+            {
+              $.ajax({
+                url:"regAffairFetch.php",
+                method:"post",
+                data:{affair_query:affair_query},
+                success:function(data)
+                {
+                  $('#result_affair').html(data);
+                }
+              });
+            }
 
-      $('#search_text_graduates').keyup(function(){
-        var search = $(this).val();
-        if(search != '')
-        {
-          load_data(search);
-        }
-        else
-        {
-          load_data();
-        }
-      });
-    });
+            $('#search_text_affair').keyup(function(){
+              var search = $(this).val();
+              if(search != '')
+              {
+                load_data(search);
+              }
+              else
+              {
+                load_data();
+              }
+            });
+});
 function myFunction() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {

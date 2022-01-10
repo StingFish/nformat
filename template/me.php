@@ -25,7 +25,7 @@ body{
 }
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
+  max-width: 400px;
   margin: auto;
   text-align: center;
   font-family: arial;
@@ -65,17 +65,17 @@ button:hover, a:hover {
 
 <h2 style="text-align:center">User Profile Card</h2>
 <?php
-$db=mysqli_connect('localhost','root','','yearbook');
-                $mee= $_SESSION['User3'];
-                $user_check_query = "SELECT * FROM confirmed WHERE Sid = '$mee'";
+$db=mysqli_connect('localhost','root','','tests');
+                $mee= $_SESSION['User3.0'];
+                $user_check_query = "SELECT * FROM tbl_accounts WHERE email = '$mee'";
                 $result = mysqli_query($db, $user_check_query);
                 
                 while ($row = mysqli_fetch_array($result)){
                 $pass= $row['password'];
   echo "<div class='card'>";
-  echo '<img src="data:image/jpeg;base64,'.base64_encode($row['twoo'] ).'"  alt="John" style="width:100%">';
+  echo '<img src="data:image/jpeg;base64,'.base64_encode($row['profile_image'] ).'"  alt="John" style="width:100%;max-height:400px">';
   echo "<h2>".$row['lname'].", ".$row['fname']."&nbsp;".$row['mname']."</h2>
-  <p class='title'>Batch year ".$row['year']."</p>
+  <p class='title'>Batch Year ".$row['year_created']."</p>
   <p>".$row['email']."</p>";
     }
   ?>

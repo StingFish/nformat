@@ -8,7 +8,7 @@ session_start();
     else{
     isset($_SESSION['User']);
 }
-$mysqli = new mysqli('localhost','root','','yearbook') or die(mysqli_error($mysqli));
+$mysqli = new mysqli('localhost', 'root', '', 'tests') or die(mysqli_error($mysqli));
 
 #delete btn(new)
 
@@ -22,7 +22,7 @@ if(isset($_GET['email'])){
 if(isset($_GET['edit'])){
 	$id=$_GET['edit'];
   $dte = date("Y");
-	$result = $mysqli->query("SELECT * FROM tab3 WHERE id = '$id'") or die($mysqli->error());
+	$result = $mysqli->query("SELECT tbl_accounts.profile_image, tbl_accounts.lname, tbl_accounts.fname, tbl_accounts.mname, tbl_employees.eid FROM tbl_accounts JOIN tbl_employees ON tbl_employees.email = tbl_accounts.email WHERE eid = '$id'") or die($mysqli->error());
 	while($row = $result->fetch_assoc()){
 		echo "<html>";
 		echo "<head>";
@@ -122,71 +122,93 @@ form .row input::placeholder{
 .wrapper form .pass a:hover{
   text-decoration: underline;
 }
-.wrapper form .button input{
-  color: #fff;
-  font-size: 20px;
-  font-weight: 500;
-  padding-left: 0px;
-  background: #16a085;
-  border: 1px solid #16a085;
-  cursor: pointer;
+.input-container {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
 }
-form .button input:hover{
-  background: #12876f;
-}
-.wrapper form .signup-link{
+
+.icon {
+  padding: 15px;
+  background: dodgerblue;
+  color: white;
+  min-width: 50px;
   text-align: center;
-  margin-top: 20px;
-  font-size: 17px;
 }
-.wrapper form .signup-link a{
-  color: #16a085;
-  text-decoration: none;
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
 }
-form .signup-link a:hover{
-  text-decoration: underline;
+
+.input-field:focus {
+  border: 2px solid dodgerblue;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: dodgerblue;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 1;
 }";
 echo "</style>";
 		echo "</head>";
 		echo "<body>";
 		echo "<div class='container'>
       <div class='wrapper'>
-        <div class='title'><span>Edit Info</span></div>
-        <form action='s.php' method='POST' enctype='multipart/form-data' style='overflow-y:scroll;'>";
-        echo '<center><img class="imahe" style="width:80px; height:100px;" src="data:image/jpeg;base64,'.base64_encode($row['image1'] ).'"/></center>';
+        <div class='title'><span>Add to Yearbook</span></div>
+        <form action='s.php' method='post' enctype='multipart/form-data' style='overflow-y:scroll;'>";
+        echo '<center><img class="imahe" style="width:80px; height:100px;" src="data:image/jpeg;base64,'.base64_encode($row['profile_image'] ).'"/></center><br>';
 
-        echo "<input type='number' name='id' value='".$id."' placeholder='Email or Phone' style='display:none;'>
-        
-          <div class='row'>
-            <label>Last Name</label>
-            <i class='fa fa-user'></i>
-            <input type='text' name='lname' placeholder='Last Name' value='".$row['lname']."'>
-          </div><br>
-          <div class='row'>
-          <label>First Name</label>
-            <i class='fa fa-user'></i>
-            <input type='text' name='fname' placeholder='First Name' value='".$row['fname']."' required>
-          </div><br>
-          <div class='row'>
-          <label>Middle Initial</label>
-            <i class='fa fa-user'></i>
-            <input type='text' name='mname' maxlength='1' value='".$row['mname']."' placeholder='Middle Initial' required>
-          </div><br>
-          <div class='row'>
-          <label>Position</label>
-            <i class='fa fa-user'></i>
-            <input type='text' name='pos' value='".$row['position']."' placeholder='Position' required>
-          </div><br>
-          <div class='row'>
-          <label>Year</label>
-            <i class='fa fa-calendar'></i>
-            <input type='number' name='yr' placeholder='Year' max='".$dte."' value='".$row['year']."' required>
-          </div><br>
+        echo "<input type='text' name='id' value='".$id."' placeholder='Email or Phone' style='display:none;'>
+          
+          <div class='input-container'>
+    <i class='fa fa-user icon'></i>
+    <input class='input-field' type='text' onkeypress='return /[a-z keyCode-]/i.test(event.key)' placeholder='Last Name' value='".$row['lname']."' name='lname' required>
+  </div>
+          <div class='input-container'>
+    <i class='fa fa-user icon'></i>
+    <input class='input-field' type='text' onkeypress='return /[a-z keyCode-]/i.test(event.key)' placeholder='First Name' value='".$row['fname']."' name='fname' required>
+  </div>
+
+          <div class='input-container'>
+    <i class='fa fa-user icon'></i>
+    <input class='input-field' type='text' onkeypress='return /[a-z keyCode-]/i.test(event.key)' placeholder='Middle Name' value='".$row['mname']."' name='mname' required>
+  </div>
+
+          <div class='input-container'>
+    <i class='fa fa-user icon'></i>
+    <input class='input-field' type='text' placeholder='Work Status' name='roles' required>
+  </div>
+
+          <small>Entry Group Type</small>
+          <div class='input-container'>
+    <select name='pos' class='input-field'>
+    <option value='Administrative Officers'>Administrative Officers</option>
+    <option value='Academic Affairs'>Academic Affairs</option>
+  </select>
+  </div>
+
+          <div class='input-container'>
+    <i class='fa fa-user icon'></i>
+    <input class='input-field' type='number' name='yr' placeholder='Year' min='2018' max='".$dte."' onkeypress='return /[0-9]/i.test(event.key)' required>
+  </div>
+
           <div class='row button'>
-            <input type='submit' name='save2' value='Save'>
+            <button type='submit' name='save2' style='width: 100%;color: #fff;font-size: 20px;font-weight: 500;padding-left: 0px;background: #16a085;border: 1px solid #16a085;cursor: pointer;'>Save</button>
           </div>
           <div class='row button'>
-            <input type='submit' name='cancel' value='Cancel'></a>
+            <a href='index.php' type='submit' style='text-decoration: none;width: 100%;color: #fff;font-size: 20px;font-weight: 500;padding: 4px;height: 35px;background: #16a085;border: 1px solid #16a085;cursor: pointer;display: inline-block;text-align: center;'> Cancel </a>
           </div>
         </form>
       </div>

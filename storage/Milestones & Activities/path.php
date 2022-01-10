@@ -18,18 +18,16 @@
 <link rel="stylesheet" href="assets/base.css">
 <link rel="stylesheet" href="sty1.css">
 <link rel="shortcut icon" href="CvSU/logo-removebg.png">
-<script src="styles/js/jquery-3.6.0.js"></script>
-<script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
+<script src="jquery-3.6.0.js"></script>
 <style>
 body{
-  background-image: url("assets/tmp4.jpg");
+  transition: background-color .5s;
+  background-image: url("assets/tmp2.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  
 }
 table {
   border-collapse: collapse;
@@ -47,6 +45,38 @@ tr:hover {background-color: yellow;}
 th {
   background-color: #04AA6D;
   color: white;
+}
+hov:hover{
+ background-color: white;
+}
+body{
+  transition: background-color .5s;
+  background-image: url("assets/tmp2.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  
+}
+table {
+  border-collapse: collapse;
+  width: 90%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(odd){background-color: #f2f2f2}
+tr:nth-child(even){background-color: #f2f2f2}
+tr:hover {background-color: yellow;}
+
+th {
+  background-color: #04AA6D;
+  color: white;
+}
+hov:hover{
+ background-color: white;
 }
 .logo {
     width: 45px;
@@ -99,7 +129,7 @@ th {
   margin: auto;
   padding: 0;
   border: 1px solid #888;
-  width: 40%;
+  width: 80%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
@@ -147,26 +177,106 @@ th {
   background-color: #5cb85c;
   color: white;
 }
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button2 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+}
+
+.button2:hover {
+  background-color: #008CBA;
+  color: white;
+}
 </style>
 </head>
 <body>
 
 <header>
+  <?php
+  $db=mysqli_connect('localhost','root','','yearbook');
+  $goo= $_SESSION['User'];
+         $user_check_query = "SELECT * FROM confirmed WHERE Sid='$goo'";
+         $result = mysqli_query($db, $user_check_query);
+  ?>
+  <div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <?php
+    while ($row = mysqli_fetch_array($result)){
+    echo '<center><img src="CvSU/logo-removebg.png" style="width:80%;margin-left:0px;border-radius:50%;"></center>';
+ 
+  echo "<center><p style='margin-left:-10px;color:white;'>".$row['fname']." ".$row['lname']."</p></center>";
+   }
+  ?>
+  <form action="../../storage.php"> 
+  <center><button type="submit" class="button button2" style="width:90%;height:60px;">Home</button></center>
+  </form>
+  <form action="../../logout.php"> 
+  <center><button type="submit" class="button button2" style="width:90%;height:60px;">Log Out</button></center>
+  </form>
+</div>
+
 <div class="topnav" id="myTopnav">
   <div>
-  <a href="#"><img src="CvSU/logo-removebg.png" alt="logo" class="logo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;202000001</i></a>
+  <a href="javascript:void(0);" onclick="openNav()"><img src="CvSU/logo-removebg.png" alt="logo" class="logo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $_SESSION['User']; ?></i></a>
 </div>
-  <a href="http://localhost/nformat/storage.php">Storage Files</a>
-  <div class="dropdown">
-    <button class="dropbtn">Profile 
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="#">Account Info</a>
-      <a href="logout.php">Logout</a>
-    </div>
-  </div> 
-  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
 </header>
   <div>
@@ -234,7 +344,7 @@ window.onclick = function(event) {
      <?php
   $db=mysqli_connect('localhost','root','','yearbook');
   $goo= 2021;
-         $user_check_query = "SELECT * FROM folder2 where type='D' ORDER BY year";
+         $user_check_query = "SELECT * FROM folder2 where type='A' ORDER BY year";
          $result = mysqli_query($db, $user_check_query);
 
          while ($row = mysqli_fetch_array($result)){
@@ -243,7 +353,7 @@ window.onclick = function(event) {
             echo '<a href="index.php?call='.$row["year"].'"><img name="nooo" class="pic" src="CvSU/db.png" style="width:300px;"/></a>';
             
             echo "<div class='contentt' style='margin-top: -30px;color:black;'>";
-            echo "<center>".$row["year"].".sql</center>";
+            echo "<center style='font-weight:bold;'>".$row["year"].".xlsx</center>";
             echo "</div>";
             echo "</div>";
             echo "</div>";
@@ -265,21 +375,34 @@ function myFunction() {
   }
 }
 </script>
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+  document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+  document.body.style.backgroundColor = "white";
+}
+</script>
 <?php
 if (isset($_POST['submit1'])) {
     $db=mysqli_connect('localhost', 'root', '', 'yearbook');
     $yr= mysqli_real_escape_string($db, $_POST['f1']);
 
-         $user_check_query = "SELECT * FROM folder2 where year='$yr' AND type='D' LIMIT 1";
+         $user_check_query = "SELECT * FROM folder2 where year='$yr' AND type='A' LIMIT 1";
          $result = mysqli_query($db, $user_check_query);
          $user = mysqli_fetch_assoc($result);
          if ($user) { // if user exists
-    if ($user['year'] === $yr && $user['type'] === 'D') {
+    if ($user['year'] === $yr && $user['type'] === 'A') {
               echo "<script>alert('Database already exist!'); window.location='path.php';</script>";
          }
   }
          else{
-            $adds="INSERT INTO folder2 (type, year) VALUES ('D', '$yr')";
+            $adds="INSERT INTO folder2 (type, year) VALUES ('A', '$yr')";
             mysqli_query($db, $adds);
             echo "<script>window.location='path.php';</script>";
          }

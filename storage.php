@@ -227,7 +227,7 @@ hov:hover{
 <body style="overflow-y: auto;">
 <header>
   <?php
-  $db=mysqli_connect('localhost','root','','yearbook_test');
+  $db=mysqli_connect('localhost','root','','tests');
   $goo= $_SESSION['User'];
          $user_check_query = "SELECT * FROM tbl_accounts WHERE lname='$goo'";
          $result = mysqli_query($db, $user_check_query);
@@ -271,7 +271,7 @@ hov:hover{
     </tr>
    </thead>
    <tbody>
-    <tr onclick="window.location='storage/Employees Database/path.php';">
+    <tr onclick="window.location='storage/Employees Database/index.php';">
       <td  style="width:20%; padding: -10 -10px ;">
           <center>
           <div class='imgBx' style='border:none;'>
@@ -279,7 +279,7 @@ hov:hover{
       <td style="width:80%;"><b>Employee's Database</b><br><p>This is the place where you can input employee's profile and information. This is where the data of Academic Affairs and Administrative Officers. It contains critical information, such as each employee's personal information, It holds a variety of employee personnel fields such as name, age, job position, and year for the presentation of digital yearbook and the information are easily added by the registrars.</p></td>
     </tr> 
 </div>
-    <tr onclick="window.location='storage/Students Database/path.php';">
+    <tr onclick="window.location='storage/Students Database/index.php';">
       <td  style="width:20%">
           <center>
           <div class='imgBx' style='border:none;'>
@@ -293,12 +293,26 @@ hov:hover{
           <img src="CvSU/blue.png" style="width:200px;"></center></td>
       <td style="width:80%;"><b>Milestones Database</b><br><p>This is the place where you can input pictures of every batch. This is where you can add desciptions to post memorable things in digital yearbook.</p></td>
     </tr>
-    <tr onclick="window.location='storage/Milestones & Activities/path.php';">
+    <tr onclick="window.location='storage/Extras Database/index.php';">
       <td  style="width:20%">
           <center>
           <div class='imgBx' style='border:none;'>
           <img src="CvSU/blue.png" style="width:200px;"></center></td>
-      <td style="width:80%;"><b>Yearbook Database</b><br><p>This is the place where you can see the overall inputs from the databases. It contains data added from Administrative Officers, Academic Affairs, and Graduate students.</p></td>
+      <td style="width:80%;"><b>Extra Database</b><br><p>This is the place where you can input title, color scheme, and message of every batch. This is where you can add desciptions to add it in digital yearbook.</p></td>
+    </tr>
+    <tr onclick="window.location='storage/EYearbook Database/path.php';">
+      <td  style="width:20%">
+          <center>
+          <div class='imgBx' style='border:none;'>
+          <img src="CvSU/blue.png" style="width:200px;"></center></td>
+      <td style="width:80%;"><b>Employee's Yearbook Database</b><br><p>This is the place where you can see the employee's overall inputs from the databases. It contains data added from Administrative Officers & Academic Affairs.</p></td>
+    </tr>
+    <tr onclick="window.location='storage/SYearbook Database/path.php';">
+      <td  style="width:20%">
+          <center>
+          <div class='imgBx' style='border:none;'>
+          <img src="CvSU/blue.png" style="width:200px;"></center></td>
+      <td style="width:80%;"><b>Alumni Yearbook Database</b><br><p>This is the place where you can see the alumni's overall inputs from the databases. It contains data added from Alumni Graduates.</p></td>
     </tr>
   </tbody>
   </table>

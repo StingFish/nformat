@@ -9,7 +9,7 @@ $email    = "";
 $errors = array();
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'yearbook_test');
+$db = mysqli_connect('localhost', 'root', '', 'tests');
 
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
@@ -77,12 +77,13 @@ if (isset($_POST['lc'])) {
               $results=mysqli_query($db,$query);
               if (mysqli_num_rows($results) == 1) {
               $logged_in_user = mysqli_fetch_assoc($results);
-              if ($logged_in_user['atype'] == 'R' || $logged_in_user['atype'] == 'r') {
+              if ($logged_in_user['atype'] == 'r') {
                 if ($logged_in_user['is_disabled'] =='n'){
                   $years = "SELECT * FROM tbl_accounts WHERE email='$username'";
                   $resulta=mysqli_query($db,$years);
                   $log = mysqli_fetch_assoc($resulta);
                   $_SESSION['User']=$log['lname'];
+                  $_SESSION['User.1']=$log['email'];
                   $tot= $log['year'];
                    $_SESSION['Users']= $tot;
                    header('Location: storage.php');
@@ -117,7 +118,7 @@ if (isset($_POST['lc'])) {
                   $log = mysqli_fetch_assoc($resulta);
                   $_SESSION['User3']=$username;
                   $_SESSION['User3.0']=$log['email'];
-                  $tot= $log['year'];
+                  $tot= $log['year_created'];
                    $_SESSION['Users3']= $tot;
                   header('Location: template/menu.php');
               }

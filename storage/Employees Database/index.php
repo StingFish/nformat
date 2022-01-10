@@ -291,28 +291,20 @@ display: inline;
 </head>
 <body>
 <?php
-        $db = mysqli_connect('localhost', 'root', '', 'yearbook');
+        $db = mysqli_connect('localhost', 'root', '', 'tests');
         $year = date("Y");
-
-        if (isset($_GET['call'])) {
-        $Ys= mysqli_real_escape_string($db, $_GET['call']);
-        $_SESSION['Use']=$Ys;
-        $sql = "SELECT * FROM shs WHERE year='$Ys' ORDER BY lname";
-        $result = mysqli_query($db,$sql);
-        $rows = mysqli_num_rows($result);
-      }
         ?>
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <?php
   $goo= $_SESSION['User'];
-    $user_check_query = "SELECT * FROM confirmed WHERE Sid='$goo'";
+    $user_check_query = "SELECT * FROM tbl_accounts WHERE lname='$goo'";
          $res = mysqli_query($db, $user_check_query);
     while ($rows = mysqli_fetch_array($res)){
     echo '<center><img src="CvSU/logo-removebg.png" style="width:80%;margin-left:0px;border-radius:50%;"></center>';
  
-  echo "<center><p style='margin-left:-10px;color:white;'>".$rows['fname']." ".$rows['lname']."</p></center>";
+ echo "<center><p style='margin-left:-10px;color:white;'>".$rows['fname']." ".$rows['mname']." ".$rows['lname']."</p><p>".$rows['email']."</p></center>";
    }
   ?>
   <form action="../../storage.php"> 
@@ -339,7 +331,7 @@ display: inline;
   <!--- Start here --->
   <div class="search-container">
     <div>
-        <a href="#" class="float add-btn-reg-a">
+        <a href="#" class="float add-btn-reg-a" style="display:none;">
 <i class="my-float" style="font-family: Oswald;font-size: 40px;font-style: normal;font-weight: bold;">+</i>
 </a>
 <div class="label-container">
@@ -347,29 +339,8 @@ display: inline;
 <i class="fa label-arrow"></i>
 </div>
         <div class="addMember-reg-a">
-            <form action="formFunction.php" class="me form" method="post"  enctype="multipart/form-data" style="overflow-y:scroll;">
-                <h2>Add Member</h2>
-
-                <div class="inputField">
-                <p>Select Image</p>
-                <input type="file" name="f1" required>
-
-                <p>Firstname</p>
-                <input type="text" name="Fname"required><br>
-
-                <p>Middle Initial</p>
-                <input type="text" name="Mname" maxlength="4" required><br>
-
-                <p>Lastname</p>
-                <input type="text" name="Lname"required><br>
-
-                <p>Position</p>
-                <input type="text" name="position"required><br>
-
-                <p>Year</p>
-                <input type="text" name="year" maxlength="4" required><br>
-
-                <div class="buttons">
+            <form action="#" class="me form" method="post"  enctype="multipart/form-data" style="overflow-y:scroll;">
+                
 
             <center><div class="action_btn">
 

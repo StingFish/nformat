@@ -227,7 +227,7 @@ hov:hover{
 <body style="overflow-y: auto;">
 <header>
   <?php
-  $db=mysqli_connect('localhost','root','','yearbook_test');
+  $db=mysqli_connect('localhost','root','','tests');
   $goo= $_SESSION['User2'];
          $user_check_query = "SELECT * FROM tbl_accounts WHERE lname='$goo'";
          $result = mysqli_query($db, $user_check_query);
