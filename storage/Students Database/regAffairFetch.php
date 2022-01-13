@@ -3,7 +3,7 @@
 
     if(!isset($_SESSION['User']))
     {
-      echo "<script>alert('You must login first.');window.location='LC.php';</script>";
+      echo "<script>alert('You must login first.');window.location='../../landpage.php';</script>";
     }
     isset($_SESSION['User']);
 ?>
@@ -51,7 +51,7 @@ if(mysqli_num_rows($result) > 0)
 	{
 		$output .= '
 			<tr>
-				<td data-label="Image"><img class="image-official" src="data:image/jpeg;base64,'.base64_encode($row["profile_image"]).'"/></td>
+				<td data-label="Image"><img class="image-official" src="../../DB/'.$row["profile_image"].'"/></td>
 				<td data-label="Last Name">'.$row["lname"].'</td>
         <td data-label="First Name">'.$row["fname"].'</td>
 				<td data-label="Middle/tInitial">'.$row["mname"].'</td>

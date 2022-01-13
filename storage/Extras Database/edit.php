@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
-<title>Edit Info</title>
+<title>ADd Extras</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
@@ -139,7 +139,7 @@ body{
     <div class="container">
       <div class="wrapper">
       <div class="title">
-        <span>Add Account</span>
+        <span>Add Extras</span>
       </div>
         <form action="edit.php" name="frmContact" method="post" enctype="multipart/form-data" style="overflow-y:scroll;">
 

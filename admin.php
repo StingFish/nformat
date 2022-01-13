@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Storage Files</title>
+<title>Admin Panel</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script><![endif]--> 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
@@ -236,7 +236,7 @@ hov:hover{
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <?php
     while ($row = mysqli_fetch_array($result)){
-    echo '<center><img src="data:image/jpeg;base64,'.base64_encode($row["profile_image"]).'" style="width:80%;margin-left:0px;border-radius:50%;"></center>';
+    echo '<center><img src="DB/'.$row["profile_image"].'" style="width:80%;margin-left:0px;border-radius:50%;"></center>';
  
   echo "<center><p style='margin-left:-10px;color:white;'>".$row['fname']." ".$row['mname']." ".$row['lname']."</p><p>".$row['email']."</p></center>";
    }
@@ -279,7 +279,7 @@ hov:hover{
       <td style="width:80%;"><b>Accounts Database</b><br><p>This is the place where you can input employee's and students profile and information. This is where the  account data of Alumni Graduates, Academic Affairs and Administrative Officers. It contains critical information, such as each employee's ad students personal information which holds a variety of employee and student personnel fields such as fullname, date graduated, contact number, and year for the presentation of digital yearbook.</p></td>
     </tr> 
 </div>
-    <tr onclick="window.location='Admin/Sign In History Database/path.php';">
+    <tr onclick="window.location='Admin/Sign In History Database/index.php';">
       <td  style="width:20%">
           <center>
           <div class='imgBx' style='border:none;'>

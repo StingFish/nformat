@@ -1,49 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		.contentss{
+  visibility: visible;
+    }
+    .wrappers{
+    	max-height: 450px;
+    }
+@media (min-width:320px)  {.contentss{visibility: hidden;}}
+@media (min-width:481px)  {.contentss{visibility: hidden;}}
+@media (min-width:641px)  {.contentss{visibility: hidden;}}
+@media (min-width:641px)  {.contentss{visibility: visible;}}
+@media (min-width:961px)  {.contentss{visibility: visible;}}
+@media (min-width:1025px) {.contentss{visibility: visible;}}
+@media (min-width:1281px) {.contentss{visibility: visible;}}
+    
+}
+	</style>
+</head>
+<body>
+
+</body>
+</html>
 <?php
     session_start();
 
     if(!isset($_SESSION['User']))
     {
-      echo "<script>alert('You must login first.');window.location='LC.php';</script>";
+      echo "<script>alert('You must login first.');window.location='../../landpage.php';</script>";
     }
+    isset($_SESSION['Use']);
     isset($_SESSION['User']);
 ?>
 <?php
+
 $db_connect = new mysqli('localhost','root','','tests') or die ("Could not connect to database".mysqli_error($db_connect));
 $output = '';
+$Yee = $_SESSION['Use'];
 if(isset($_POST["affair_query"]))
 {
 	
 	$search = mysqli_real_escape_string($db_connect, $_POST["affair_query"]);
-	$query = " SELECT tbl_accounts.email, tbl_accounts.profile_image, tbl_accounts.fname, tbl_accounts.mname, tbl_accounts.lname, tbl_employees.eid FROM tbl_employees INNER JOIN tbl_accounts ON tbl_accounts.email = tbl_employees.email WHERE lname LIKE '%".$search."%' ORDER BY tbl_accounts.lname ASC";
+	$query = " SELECT * FROM tbl_academic WHERE academic_year = '$Yee' AND academic_year LIKE '%".$search."%' ORDER BY academic_year ASC";
 }
 else
 {
 	$query = "
-	SELECT tbl_accounts.email, tbl_accounts.profile_image, tbl_accounts.fname, tbl_accounts.mname, tbl_accounts.lname, tbl_employees.eid FROM tbl_employees INNER JOIN tbl_accounts ON tbl_accounts.email = tbl_employees.email ORDER BY tbl_accounts.lname ASC";
+	SELECT * FROM tbl_academic WHERE academic_year = '$Yee' ORDER BY academic_year ASC";
 }
 $result = mysqli_query($db_connect, $query);
 
 if(mysqli_num_rows($result) > 0)
 {
 	$output .= '
-          <div>
+          <div class ="wrappers" style="overflow-y:auto;">
 					<table id="wrapper">
 					<thead>
 						<tr>
-							<th>Image</th>
-							<th>Last Name</th>
-							<th>First Name</th>
-							<th>Middle Initial</th>
-							<th>Action</th>
+							<th style="width:250px;">Image</th>
+							<th style="width:150px;">Description</th>
+							<th style="width:150px;">Action</th>
 						</tr>
 					</thead>
 					<tfoot>
 						<tr>
-						<th>Image</th>
-						<th>Last Name</th>
-						<th>First Name</th>
-						<th>Middle Initial</th>
-						<th>Action</th>
+							<th style="width:250px;">Image</th>
+							<th style="width:150px;">Description</th>
+							<th style="width:150px;">Action</th>
 						</tr>
 					</tfoot>
 					';
@@ -51,13 +75,11 @@ if(mysqli_num_rows($result) > 0)
 	{
 		$output .= '
 			<tr>
-				<td data-label="Image"><img class="image-official" src="data:image/jpeg;base64,'.base64_encode($row["profile_image"]).'"/></td>
-				<td data-label="Last Name">'.$row["lname"].'</td>
-        <td data-label="First Name">'.$row["fname"].'</td>
-				<td data-label="Middle/tInitial">'.$row["mname"].'</td>
-        <td align="center">
-                <a style="text-decoration:none; color:white;" href ="regFunction.php?edit='.$row["eid"].'"><button class="button button2" style="width:90%;height:60px;">
-              Add to Yearbook</button></a>
+				<td data-label="Image"><img style="max-width:50%;max-height:50%" src="uploads/'.$row["academic_image"].'"/></td>
+				<td data-label="Last Name">'.$row["academic_description"].'</td>
+        		<td align="center">
+                <a style="text-decoration:none; color:white;" href ="regFunction.php?editan='.$row["academic_entry_id"].'"><button class="button button2" style="width:90%;height:60px;">
+              Delete entry</button></a>
                 
               </td>
 			</tr>
@@ -68,30 +90,26 @@ if(mysqli_num_rows($result) > 0)
 else
 {
 	$output .= '
-          <div>
+          <div class ="wrappers" style="overflow-y:auto;">
 					<table id="wrapper">
 					<thead>
 						<tr>
-							<th>Image</th>
-							<th>Last Name</th>
-							<th>First Name</th>
-							<th>Middle Initial</th>
-							<th>Action</th>
+							<th style="width:250px;">Image</th>
+							<th style="width:150px;">Description</th>
+							<th style="width:150px;">Action</th>
 						</tr>
 					</thead>
 					<tfoot>
 						<tr>
-						<th>Image</th>
-							<th>Last Name</th>
-							<th>First Name</th>
-							<th>Middle Initial</th>
-							<th>Action</th>
+							<th style="width:250px;">Image</th>
+							<th style="width:150px;">Description</th>
+							<th style="width:150px;">Action</th>
 						</tr>
 					</tfoot>
 					';
 		$output .= '
 			<tr>
-				<td data-label="Result" colspan="5">Data not Found</td>
+				<td data-label="Result" colspan="3">Data not Found</td>
 			</tr>
 		';
 	

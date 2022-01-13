@@ -11,7 +11,7 @@
     $_SESSION['User3']=null; 
     $_SESSION['Users3']=null; 
         session_destroy();
-        header("location:LC.php");
+        header("location:landpage.php");
 
 
 ?>

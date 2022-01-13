@@ -1,11 +1,11 @@
 <?php
     session_start();
 
-    if(!isset($_SESSION['User']))
+    if(!isset($_SESSION['User2']))
     {
-    echo "<script>alert('You must login as Registrar first.');window.location='LC.php';</script>";
+    echo "<script>alert('You must login as Registrar first.');window.location='../../landpage.php';</script>";
     }
-    isset($_SESSION['User']);
+    isset($_SESSION['User2']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -269,31 +269,23 @@ a.float:hover + div.label-container{
 </head>
 <body>
 <?php
-        $db = mysqli_connect('localhost', 'root', '', 'yearbook');
+        $db = mysqli_connect('localhost', 'root', '', 'tests');
         $year = date("Y");
-
-        if (isset($_GET['call'])) {
-        $Ys= mysqli_real_escape_string($db, $_GET['call']);
-        $_SESSION['Use']=$Ys;
-        $sql = "SELECT * FROM tab2 WHERE year='$Ys' ORDER BY lname";
-        $result = mysqli_query($db,$sql);
-        $rows = mysqli_num_rows($result);
-      }
         ?>
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <?php
-  $goo= $_SESSION['User'];
-    $user_check_query = "SELECT * FROM confirmed WHERE Sid='$goo'";
+  $goo= $_SESSION['User2.0'];
+    $user_check_query = "SELECT * FROM tbl_accounts WHERE email='$goo'";
          $res = mysqli_query($db, $user_check_query);
     while ($rows = mysqli_fetch_array($res)){
-    echo '<center><img src="CvSU/logo-removebg.png" style="width:80%;margin-left:0px;border-radius:50%;"></center>';
+    echo '<center><img src="../../DB/'.$rows['profile_image'].'" style="width:80%;margin-left:0px;border-radius:50%;"></center>';
  
   echo "<center><p style='margin-left:-10px;color:white;'>".$rows['fname']." ".$rows['lname']."</p></center>";
    }
   ?>
-  <form action="../../storage.php"> 
+  <form action="../../admin.php"> 
   <center><button type="submit" class="button button2" style="width:90%;height:60px;">Home</button></center>
   </form>
   <form action="../../logout.php"> 
@@ -303,7 +295,7 @@ a.float:hover + div.label-container{
 
 <div class="topnav" id="myTopnav">
   <div>
-  <a href="javascript:void(0);" onclick="openNav()"><img src="CvSU/logo-removebg.png" alt="logo" class="logo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $_SESSION['User']; ?></i></a>
+  <a href="javascript:void(0);" onclick="openNav()"><img src="CvSU/logo-removebg.png" alt="logo" class="logo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $_SESSION['User2']; ?></i></a>
 </div>
 <div>
   <center><input class="inp" type="text" placeholder="Search by name" name="search-text" style="width:50%;background-position: 10px 10px;padding: 10px 20px 10px 35px;margin-bottom: 5px;margin-top: 5px;" id="search_text_affair"></center>
@@ -312,7 +304,7 @@ a.float:hover + div.label-container{
 <br>
 <br>
 <br>
-<a href="#" class="float">
+<a href="#" class="float" style="display:none;">
 <i class="my-float" style="font-family: Oswald;font-size: 40px;font-style: normal;font-weight: bold;">+</i>
 </a>
 <div class="label-container">

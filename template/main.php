@@ -4,7 +4,7 @@
 
     if(!isset($_SESSION['User3']))
     {
-      echo "<script>alert('You must login as Student first.');window.location='../logout3.php';</script>";
+      echo "<script>alert('You must login as Student first.');window.location='../landpage.php';</script>";
     }
     isset($_SESSION['User3']);
     isset($_SESSION['Users3']);
@@ -280,6 +280,16 @@ a.float:hover + div.label-container{
     width: 100%;
   }
 }
+.wowslider ul li:nth-of-type(1) {background-image: url("#");display: block}
+.wowslider ul li:nth-of-type(2) {background-image: url("#")}
+.wowslider ul li:nth-of-type(3) {background-image: url("#")}
+.wowslider ul li:nth-of-type(4) {background-image: url("#")}
+.wowslider ul li:nth-of-type(5) {background-image: url("#")}
+.wowslider ul li:nth-of-type(6) {background-image: url("#")}
+.wowslider ul li:nth-of-type(7) {background-image: url("#")}
+.wowslider ul li:nth-of-type(8) {background-image: url("#")}
+.wowslider ul li:nth-of-type(9) {background-image: url("#")}
+.wowslider ul li:nth-of-type(10) {background-image: url("#")}
 </style>
 </head>
 
@@ -296,17 +306,17 @@ a.float:hover + div.label-container{
            
             <ul> 
 
-                <li class="wow pulse wowactive" style="overflow-y: scroll;overflow-x: hidden;"> <!--- Milestones --->
-                <h2 class="wow fadeInDown board"style="font-family: 'Dancing Script', cursive; font-size: 50px; margin-top: 0;">- Milestones & Activities -</h2>
+                <li class="wow pulse wowactive" style="overflow-y: auto;overflow-x: hidden;background-color: <?php echo $fetch['color_scheme'] ?>;"> <!--- Milestones --->
+                <h2 class="wow fadeInDown board"style="font-family: 'Dancing Script', cursive; font-size: 50px; margin-top: 0;background-color: <?php echo $fetch['color_scheme'] ?>;">- Milestones & Activities -</h2>
                     <div class="wow fadeIn" style="background:none">
                 <?php 
-                    $db=mysqli_connect('localhost','root','','yearbook');
+                    $db=mysqli_connect('localhost','root','','tests');
                 $goo= $_SESSION['Users3'];
-                $user_check_query = "SELECT * FROM tab11 WHERE year = '$goo'";
+                $user_check_query = "SELECT * FROM tbl_academic WHERE academic_year = '$goo'";
                 $result = mysqli_query($db, $user_check_query);
 
                 while ($row = mysqli_fetch_array($result)){
-                echo '<img class="myImages"  id="myImg" src="data:image/jpeg;base64,'.base64_encode($row['image1']).'" alt="'.$row['description'].'" style="width:100%;max-width:300px;"><br>
+                echo '<img class="myImages"  id="myImg" src="../storage/Milestones & Activities/uploads/'.$row['academic_image'].'" alt="'.$row['academic_description'].'" style="width:100%;max-width:300px;float:left"><br>
                 
 <div id="myModal" class="modal">
   <span class="close">&times;</span>
@@ -346,8 +356,8 @@ span.onclick = function() {
             
                 </div>
                 </li>
-                <li class="wow pulse" style="overflow-y: scroll;overflow-x: hidden;"> <!--- Administrative --->
-                    <h2 class="wow fadeInUp board" style="font-family: 'Dancing Script', cursive; font-size: 50px; margin-top: 0;">- The Graduates -</h2>
+                <li class="wow pulse" style="overflow-y: auto;overflow-x: hidden;background-color: <?php echo $fetch['color_scheme'] ?>;"> <!--- Administrative --->
+                    <h2 class="wow fadeInUp board" style="font-family: 'Dancing Script', cursive; font-size: 50px; margin-top: 0;background-color: <?php echo $fetch['color_scheme'] ?>;">- The Graduates -</h2>
    <div class="wow fadeInLeft yb-php2" style="background:none">
   <?php 
   $db=mysqli_connect('localhost', 'root', '', 'tests');
@@ -359,11 +369,11 @@ span.onclick = function() {
            echo "<div class='container'>";
             echo "<div class='card' style='height:350px;'>";
             echo "<div class='imgBx'>";
-            echo '<img class="pic" src="data:image/jpeg;base64,'.base64_encode($row['profile_image'] ).'"/>';
-            echo '<img  class="picbig" src="data:image/jpeg;base64,'.base64_encode($row['profile_image'] ).'"/>';
+            echo '<img class="pic" src="../DB/'.$row['profile_image'].'"/>';
+            echo '<img  class="picbig" src="../DB/'.$row['profile_image'].'"/>';
             echo "</div>";
             echo "<div class='contentt'>";
-            echo "<h2 class='unselectable' style='font-family: Oswald;'>".$row['sfname']."&nbsp;".$row['smname']."&nbsp;".$row['slname']."</h2>";
+            echo "<h2 class='unselectable' style='font-family: Oswald;'>".$row['sfname']."&nbsp;".substr($row['smname'],0,1).".&nbsp;".$row['slname']."</h2>";
             echo "<p style='font-family: Oswald;'>&#10075;&#10075;".$row['quotes']."."."&#10076;&#10076;</p>";
             echo "</div>";
             echo "</div>";
@@ -372,8 +382,8 @@ span.onclick = function() {
   ?>
    </div>
                 </li>
-                 <li class="wow pulse" style="overflow-y: scroll;overflow-x: hidden;"> <!--- Administrative --->
-                    <h2 class="wow fadeInUp board" style="font-family: 'Dancing Script', cursive; font-size: 50px; margin-top: 0;">- Academic Affairs -</h2>
+                 <li class="wow pulse" style="overflow-y: auto;overflow-x: hidden;background-color: <?php echo $fetch['color_scheme'] ?>;"> <!--- Administrative --->
+                    <h2 class="wow fadeInUp board" style="font-family: 'Dancing Script', cursive; font-size: 50px; margin-top: 0;background-color: <?php echo $fetch['color_scheme'] ?>;">- Academic Affairs -</h2>
    <div class="wow fadeInUp yb-php2" style="background:none">
   <?php 
   $db=mysqli_connect('localhost','root','','tests');
@@ -385,11 +395,11 @@ span.onclick = function() {
             echo "<div class='container'>";
             echo "<div class='card' style='height:350px;'>";
             echo "<div class='imgBx'>";
-            echo '<img class="pic" src="data:image/jpeg;base64,'.base64_encode($row['profile_image'] ).'"/>';
-            echo '<img class="picbig" src="data:image/jpeg;base64,'.base64_encode($row['profile_image'] ).'"/>';
+            echo '<img class="pic" src="../DB/'.$row['profile_image'].'"/>';
+            echo '<img class="picbig" src="../DB/'.$row['profile_image'].'"/>';
             echo "</div>";
             echo "<div class='contentt' style='font-family: Oswald'>";
-            echo "<h2 style='margin-top:0;font-family: Oswald;'>".$row['efname']."&nbsp;".$row['emname']."&nbsp;".$row['elname']."</h2>";
+            echo "<h2 style='margin-top:0;font-family: Oswald;'>".$row['efname']."&nbsp;".substr($row['emname'],0,1).".&nbsp;".$row['elname']."</h2>";
             echo $row['work_status'];
             echo "</div>";
             echo "</div>";
@@ -398,8 +408,8 @@ span.onclick = function() {
   ?>
    </div>
                 </li>
-                <li class="wow pulse" style="overflow-y: scroll;overflow-x: hidden;"> <!--- Administrative --->
-                    <h2 class="wow fadeInUp board" style="font-family: 'Dancing Script', cursive; font-size: 50px; margin-top: 0;">- Administrative Officers -</h2>
+                <li class="wow pulse" style="overflow-y: auto;overflow-x: hidden;background-color: <?php echo $fetch['color_scheme'] ?>;"> <!--- Administrative --->
+                    <h2 class="wow fadeInUp board" style="font-family: 'Dancing Script', cursive; font-size: 50px; margin-top: 0;background-color: <?php echo $fetch['color_scheme'] ?>;">- Administrative Officers -</h2>
    <div class="wow zoomIn yb-php2" style="background:none">
   <?php 
   $db=mysqli_connect('localhost', 'root', '', 'tests');
@@ -411,11 +421,11 @@ span.onclick = function() {
             echo "<div class='container'>";
             echo "<div class='card' style='height:350px;'>";
             echo "<div class='imgBx'>";
-            echo '<img class="pic" src="data:image/jpeg;base64,'.base64_encode($row['profile_image'] ).'"/>';
-            echo '<img class="picbig" src="data:image/jpeg;base64,'.base64_encode($row['profile_image'] ).'"/>';
+            echo '<img class="pic" src="../DB/'.$row['profile_image'].'"/>';
+            echo '<img class="picbig" src="../DB/'.$row['profile_image'].'"/>';
             echo "</div>";
             echo "<div class='contentt'  style='font-family: Oswald;'>";
-            echo "<h2 style='margin-top:0;font-family: Oswald;'>".$row['efname']."&nbsp;".$row['emname']."&nbsp;".$row['elname']."</h2>";
+            echo "<h2 style='margin-top:0;font-family: Oswald;'>".$row['efname']."&nbsp;".substr($row['emname'],0,1).".&nbsp;".$row['elname']."</h2>";
             echo $row['work_status'];
             echo "</div>";
             echo "</div>";
@@ -427,16 +437,16 @@ span.onclick = function() {
                     <li class="wow pulse"> <!--- Message --->
                     
                             <?php
-                        echo "<div class='yb-php' style='background:none;overflow-y: scroll;overflow-x: hidden;' id='text2'>";
-                        echo '<center><img class="wow fadeInDown imahe" src="data:image/jpeg;base64,'.base64_encode($fetch["messages"]).'" style="width:80%;height: 100%;"></center>
+                        echo "<div class='yb-php' style='background:none;overflow-y: scroll;overflow-x: hidden;background-color: ".$fetch['color_scheme'].";' id='text2'>";
+                        echo '<center><img class="wow fadeInDown imahe" src="../storage/Extras Database/uploads/'.$fetch["messages"].'" style="width:80%;height: 100%;"></center>
                         </div>';
 
                             ?>
                         
                     
                 </li>
-                <li class="wow pulse" style="overflow-y: scroll;overflow-x: hidden;"> <!--- Vision --->
-                    <div class="overlay">
+                <li class="wow pulse" style="overflow-y: auto;overflow-x: hidden;background-color: <?php echo $fetch['color_scheme'] ?>;"> <!--- Vision --->
+                    <div class="overlay" style="background-color: <?php echo $fetch['color_scheme'] ?>;">
                         <div class="text">
                             <div class="yb-php" style="background:none;" id="text2">
                             <center><h2 class="wow zoomIn"><b>VISION</b></h2>
@@ -448,7 +458,7 @@ span.onclick = function() {
                 </div>
                 </li>
                 <li class="wow pulse"> <!--- Mission --->
-                    <div class="overlay">
+                    <div class="overlay" style="background-color: <?php echo $fetch['color_scheme'] ?>;">
                         <div class="text">
                             <center><h2 class="wow fadeInRight"><b>MISSION</b></h2>
                             <p class="wow fadeInLeft" style="justify-content: center;width:100%;font-size: 40px;font-family: Oswald;">Guided by its vision, the DFCAMCLP committed to: Motivate and develop competent, productive and ethical professionals, leaders and citizens of Las Piñas.</p></center>
@@ -457,7 +467,7 @@ span.onclick = function() {
                 </li>
                
                 <li class="wow pulse"> <!--- Title --->
-                    <div class="overlay">
+                    <div class="overlay" style="background-color: <?php echo $fetch['color_scheme'] ?>;">
                         <div class="text">
                             <center><strong><h2 class="wow zoomIn" data-wow-delay=".2s" style="font-family:Oswald;"><?php echo $fetch['front_title'];?></h2></strong></center>
                         </div>

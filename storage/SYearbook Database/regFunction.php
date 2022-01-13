@@ -3,7 +3,7 @@ session_start();
 
     if(!isset($_SESSION['User']))
     {
-      echo "<script>alert('You must login first.');window.location='LC.php';</script>";
+      echo "<script>alert('You must login first.');window.location='../../landpage.php';</script>";
     }
     else{
     isset($_SESSION['Use']);

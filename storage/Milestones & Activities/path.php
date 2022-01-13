@@ -3,7 +3,7 @@
 
     if(!isset($_SESSION['User']))
     {
-    echo "<script>alert('You must login as Registrar first.');window.location='LC.php';</script>";
+    echo "<script>alert('You must login as Registrar first.');window.location='../../landpage.php';</script>";
     }
     isset($_SESSION['User']);
 ?>
@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Academic Affairs</title>
+<title>Milestones & Academics</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script><![endif]--> 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
@@ -251,18 +251,18 @@ hov:hover{
 
 <header>
   <?php
-  $db=mysqli_connect('localhost','root','','yearbook');
+  $db=mysqli_connect('localhost','root','','tests');
   $goo= $_SESSION['User'];
-         $user_check_query = "SELECT * FROM confirmed WHERE Sid='$goo'";
+         $user_check_query = "SELECT * FROM tbl_accounts WHERE lname='$goo'";
          $result = mysqli_query($db, $user_check_query);
   ?>
   <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <?php
     while ($row = mysqli_fetch_array($result)){
-    echo '<center><img src="CvSU/logo-removebg.png" style="width:80%;margin-left:0px;border-radius:50%;"></center>';
+    echo '<center><img src="../../DB/'.$row['profile_image'].'" style="width:80%;margin-left:0px;border-radius:50%;"></center>';
  
-  echo "<center><p style='margin-left:-10px;color:white;'>".$row['fname']." ".$row['lname']."</p></center>";
+  echo "<center><p style='margin-left:-10px;color:white;'>".$row['fname']." ".$row['lname']."</p><p>".$row['email']."</p></center>";
    }
   ?>
   <form action="../../storage.php"> 
@@ -295,11 +295,12 @@ hov:hover{
         <form action="path.php" method="post">
         Data Year:
         <?php $goose=date("Y"); ?>
-      <input type="number" min='2018' max="<?php echo $goose; ?>" name="f1" style="width:100%;border-bottom:1px solid black;outline:none;">
+      <input type="number" min="2018" max="<?php echo $goose; ?>" name="f1" style="width:100%;border-bottom:1px solid black;outline:none;" onkeypress="return /[0-9]/i.test(event.key)">
     </div>
     <div class="modal-footer">
         <div>
-      <button class="loc" name="submit1" style="background-color:white;width:40px;height: 30px;margin: 0px;">ADD</button>
+      <button class="loc" name="submit1" style="background-color:white;width:40px;height: 30px;margin-left: 10px;display: inline-block;">ADD</button>
+      <button class="loc" name="submit2" style="background-color:white;width:50px;height: 30px;margin-right: 10px;">DELETE</button>
     </div>
 </div>
 </form>
@@ -342,9 +343,9 @@ window.onclick = function(event) {
   <div style="float:left;">
     <form action="" method="get">
      <?php
-  $db=mysqli_connect('localhost','root','','yearbook');
+  $db=mysqli_connect('localhost','root','','tests');
   $goo= 2021;
-         $user_check_query = "SELECT * FROM folder2 where type='A' ORDER BY year";
+         $user_check_query = "SELECT * FROM folder2 where type='B' ORDER BY year";
          $result = mysqli_query($db, $user_check_query);
 
          while ($row = mysqli_fetch_array($result)){
@@ -390,22 +391,31 @@ function closeNav() {
 </script>
 <?php
 if (isset($_POST['submit1'])) {
-    $db=mysqli_connect('localhost', 'root', '', 'yearbook');
+    $db=mysqli_connect('localhost', 'root', '', 'tests');
     $yr= mysqli_real_escape_string($db, $_POST['f1']);
 
-         $user_check_query = "SELECT * FROM folder2 where year='$yr' AND type='A' LIMIT 1";
+         $user_check_query = "SELECT * FROM folder2 where year='$yr' AND type='B' LIMIT 1";
          $result = mysqli_query($db, $user_check_query);
          $user = mysqli_fetch_assoc($result);
          if ($user) { // if user exists
-    if ($user['year'] === $yr && $user['type'] === 'A') {
+    if ($user['year'] === $yr && $user['type'] === 'B') {
               echo "<script>alert('Database already exist!'); window.location='path.php';</script>";
          }
   }
          else{
-            $adds="INSERT INTO folder2 (type, year) VALUES ('A', '$yr')";
+            $adds="INSERT INTO folder2 (type, year) VALUES ('B', '$yr')";
             mysqli_query($db, $adds);
             echo "<script>window.location='path.php';</script>";
          }
+}
+
+if (isset($_POST['submit2'])) {
+    $db=mysqli_connect('localhost', 'root', '', 'tests');
+    $yr= mysqli_real_escape_string($db, $_POST['f1']);
+    
+         $user_check_query = "DELETE FROM folder2 WHERE year='$yr' AND type='B'";
+         $result = mysqli_query($db, $user_check_query);
+         echo "<script>window.location='path.php';</script>";
 }
 
 ?>

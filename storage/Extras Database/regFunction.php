@@ -3,7 +3,7 @@ session_start();
 
     if(!isset($_SESSION['User']))
     {
-      echo "<script>alert('You must login first.');window.location='LC.php';</script>";
+      echo "<script>alert('You must login first.');window.location='../../landpage.php';</script>";
     }
     else{
     isset($_SESSION['User']);
@@ -13,9 +13,16 @@ $mysqli = new mysqli('localhost', 'root', '', 'tests') or die(mysqli_error($mysq
 #delete btn(new)
 
 if(isset($_GET['email'])){
-	$EMAIL = $_GET['email'];
-	$mysqli->query("DELETE FROM tbl_addons WHERE addon_year = '$EMAIL'") or die($mysqli->error());
+	$file = $_GET['email'];
+  $Yrr = $_SESSION['Use'];
+  $path = "uploads/" . $file;
+  if (!unlink($path)) {
+    echo "<script>alert('You already delete it.');window.location='index.php';</script>";
+  }
+  else{
+	$mysqli->query("DELETE FROM tbl_addons WHERE messages = '$file'") or die($mysqli->error());
   header("Location: index.php");
+}
 }
 
 #edit btn(new)
@@ -168,7 +175,7 @@ echo "</style>";
       <div class='wrapper'>
         <div class='title'><span>Edit Info</span></div>
         <form action='s.php' method='post' enctype='multipart/form-data' style='overflow-y:scroll;'>";
-        echo '<center><img class="imahe" style="width:80px; height:100px;" src="data:image/jpeg;base64,'.base64_encode($row['messages'] ).'"/></center><br>';
+        echo '<center><img class="imahe" style="width:80px; height:100px;" src="uploads/'.$row['messages'].'"/></center><br>';
 
         echo "<input type='text' name='id' value='".$id."' placeholder='Email or Phone' style='display:none;'>
           

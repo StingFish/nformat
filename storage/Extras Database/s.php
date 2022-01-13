@@ -3,7 +3,7 @@
 session_start();
 if(!isset($_SESSION['User']))
     {
-      echo "<script>alert('You must login first.');window.location='../../LC.php';</script>";
+      echo "<script>alert('You must login first.');window.location='../../landpage.php';</script>";
     }
     else{
     isset($_SESSION['User']);
@@ -13,7 +13,7 @@ $mysqli = mysqli_connect('localhost', 'root', '', 'tests');
 
 if(isset($_POST['save2'])){
 	$id= $_POST['id'];
-	$file =addslashes(file_get_contents($_FILES['f1']['tmp_name']));
+	$file = htmlspecialchars( basename( $_FILES["f1"]["name"]));
 	$title = $_POST['title'];
 	$color = $_POST['color'];
 

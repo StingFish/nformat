@@ -29,7 +29,7 @@
 
     if(!isset($_SESSION['User2']))
     {
-      echo "<script>alert('You must login first.');window.location='logout.php';</script>";
+      echo "<script>alert('You must login first.');window.location='../../landpage.php';</script>";
     }
     isset($_SESSION['User2']);
 ?>
@@ -52,7 +52,7 @@ $result = mysqli_query($db_connect, $query);
 if(mysqli_num_rows($result) > 0)
 {
 	$output .= '
-          <div class ="wrappers" style="overflow-x:scroll;overflow-y:scroll;">
+          <div class ="wrappers" style="overflow-x:scroll;overflow-y:auto;">
 					<table id="wrapper"> 
 					<thead>
 						<tr>
@@ -93,16 +93,16 @@ if(mysqli_num_rows($result) > 0)
 	{
 		$output .= '
 			<tr>
-				<td data-label="Image"><img class="image-official" src="data:image/jpeg;base64,'.base64_encode($row["profile_image"]).'"/></td>
-				<td data-label="First Name"><h6 class="contentss" style="z-index:0;">Last name</h6>'.$row["lname"].'</td>
-        <td data-label="First Name"><h6 class="contentss" style="z-index:0;">First name</h6>'.$row["fname"].'</td>
-				<td data-label="Middle/tInitial"><h6 class="contentss">Middle Name</h6>'.$row["mname"].'</td>
+				<td data-label="Image"><img class="image-official" src="../../DB/'.$row["profile_image"].'"/></td>
+				<td data-label="First Name">'.$row["lname"].'</td>
+        <td data-label="First Name">'.$row["fname"].'</td>
+				<td data-label="Middle/tInitial">'.$row["mname"].'</td>
 				<td data-label="Email"style="text-overflow:ellipsis; white-space:nowrap;
-  overflow:hidden;"><h6 class="contentss">Email</h6>'.$row["email"].'</td>
-				<td data-label="Password"  style="word-wrap: break-word"><h6 class="contentss" style="margin-bottom: 10px">Password</h6>'.$row["password"].'</td>
-				<td data-label="Address"><h6 class="contentss">Address</h6>'.$row["address"].'</td>
-				<td data-label="Contact No."><h6 class="contentss">contact No.</h6>'.$row["mobile"].'</td>
-				<td data-label="Landline"><h6 class="contentss">Landline</h6>'.$row["landline"].'</td>
+  overflow:hidden;">'.$row["email"].'</td>
+				<td data-label="Password"  style="word-wrap: break-word">'.$row["password"].'</td>
+				<td data-label="Address">'.$row["address"].'</td>
+				<td data-label="Contact No.">'.$row["mobile"].'</td>
+				<td data-label="Landline">'.$row["landline"].'</td>
 				<td data-label="Account Type">'.$row["atype"].'</td>
 				<td data-label="Date Created">'.$row["year_created"].'</td>
 				<td data-label="Is Disabled">'.$row["is_disabled"].'</td>
@@ -123,7 +123,7 @@ else
 {
 	$output .= '
           <div>
-					<table id="wrapper">
+					<table id="wrapper" style="overflow-x:scroll;overflow-y:auto">
 					<thead>
 						<tr>
 							<th style="width:100px;">Image</th>

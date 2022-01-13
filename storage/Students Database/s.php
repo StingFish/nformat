@@ -3,7 +3,7 @@
 session_start();
 if(!isset($_SESSION['User']))
     {
-      echo "<script>alert('You must login first.');window.location='LC.php';</script>";
+      echo "<script>alert('You must login first.');window.location='../../landpage.php';</script>";
     }
     else{
     isset($_SESSION['User']);
@@ -19,10 +19,10 @@ if(isset($_POST['save2'])){
 	$role = $_POST['quo'];
 	$year = $_POST['yr'];
 
-	$check = "SELECT * from folder2 WHERE type = 'B' and year = '$year'";
+	$check = "SELECT * FROM folder2 WHERE type = 'B' AND year = '$year'";
 	$get = mysqli_query($mysqli, $check);
 	$fetch = mysqli_fetch_assoc($get);
-	if (empty($fetch)) {
+	if (!$fetch) {
 		echo "<script>alert('Create a School Year for this batch in Alumni Yearbook Database.');window.location='index.php';</script>";
 	}
 	else{

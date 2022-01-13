@@ -30,7 +30,6 @@ body{
 	display: flex;
 	justify-content: center;
 	align-items:center;
-	background:#1c209c;
 	flex-wrap: wrap;
 }
 

@@ -61,6 +61,7 @@ input{
     outline: none;
     border-radius: 5px;
 }
+
 button{
     width: 60%;
     height: 40px;
@@ -102,6 +103,19 @@ button:hover{
 #chk:checked ~ .signup label{
     transform: scale(.6);
 }
+.error {
+  width: 100%; 
+  margin: 0px auto;
+  line-height: 20px;
+  padding: 0; 
+  border: 1px solid red; 
+  color: white; 
+  background: red; 
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 12px;
+  margin-top: -40px;
+  margin-bottom: 10px;
+}
   </style>
 </head>
 <body>
@@ -142,8 +156,20 @@ if(isset($_SESSION['User3'])) {
                 <form action="LC.php" method="post">
                     
                     <label for="chk" aria-hidden="true" style="color:#0275d8;">Sign in</label>
+                    <center><?php include('errors.php');?></center>
                     <input type="email" name="username" placeholder="email" required>
-                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="password" name="password" id="myInput" placeholder="Password" required>
+                   <input type="checkbox" onclick="myFunction()" style="float: left;height: 15px;display: inline-block;margin-top: -10px;margin-left: -20px;"><p style="margin-top: -13px;margin-left: -95px;display: block;float: left;font-size: 15px;">Show</p>
+                    <script>
+                    function myFunction() {
+                    var x = document.getElementById("myInput");
+                    if (x.type === "password") {
+                    x.type = "text";
+                    } else {
+                    x.type = "password";
+                    }
+                }   
+                    </script>
                     <button name="lc" style="background-color:#0275d8;">Login</button>
                 </form>
             </div>

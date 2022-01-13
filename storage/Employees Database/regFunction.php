@@ -3,7 +3,7 @@ session_start();
 
     if(!isset($_SESSION['User']))
     {
-      echo "<script>alert('You must login first.');window.location='LC.php';</script>";
+      echo "<script>alert('You must login first.');window.location='../../landpage.php';</script>";
     }
     else{
     isset($_SESSION['User']);
@@ -27,6 +27,7 @@ if(isset($_GET['edit'])){
 		echo "<html>";
 		echo "<head>";
 		echo "<meta charset='utf-8'>
+    <link rel='shortcut icon' href='CvSU/logo-removebg.png'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'/>
     <title>Edit Info</title>";
@@ -168,7 +169,7 @@ echo "</style>";
       <div class='wrapper'>
         <div class='title'><span>Add to Yearbook</span></div>
         <form action='s.php' method='post' enctype='multipart/form-data' style='overflow-y:scroll;'>";
-        echo '<center><img class="imahe" style="width:80px; height:100px;" src="data:image/jpeg;base64,'.base64_encode($row['profile_image'] ).'"/></center><br>';
+        echo '<center><img class="imahe" style="width:80px; height:100px;" src="../../DB/'.$row['profile_image'].'"/></center><br>';
 
         echo "<input type='text' name='id' value='".$id."' placeholder='Email or Phone' style='display:none;'>
           

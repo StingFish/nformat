@@ -28,7 +28,7 @@
 
     if(!isset($_SESSION['User']))
     {
-      echo "<script>alert('You must login first.');window.location='LC.php';</script>";
+      echo "<script>alert('You must login first.');window.location='../../landpage.php';</script>";
     }
     isset($_SESSION['Use']);
     isset($_SESSION['User']);
@@ -54,7 +54,7 @@ $result = mysqli_query($db_connect, $query);
 if(mysqli_num_rows($result) > 0)
 {
 	$output .= '
-          <div class ="wrappers" style="overflow-x:scroll;overflow-y:scroll;">
+          <div class ="wrappers" style="overflow-x:scroll;overflow-y:auto;">
 					<table id="wrapper">
 					<thead>
 						<tr>
@@ -85,7 +85,7 @@ if(mysqli_num_rows($result) > 0)
 	{
 		$output .= '
 			<tr>
-				<td data-label="Image"><img class="image-official" src="data:image/jpeg;base64,'.base64_encode($row["profile_image"]).'"/></td>
+				<td data-label="Image"><img class="image-official" src="../../DB/'.$row["profile_image"].'"/></td>
 				<td data-label="Last Name">'.$row["slname"].'</td>
         		<td data-label="First Name">'.$row["sfname"].'</td>
 				<td data-label="Middle/tInitial">'.$row["smname"].'</td>
@@ -105,7 +105,7 @@ if(mysqli_num_rows($result) > 0)
 else
 {
 	$output .= '
-          <div class ="wrappers" style="overflow-x:scroll;overflow-y:scroll;">
+          <div class ="wrappers" style="overflow-x:scroll;overflow-y:auto;">
 					<table id="wrapper">
 					<thead>
 						<tr>

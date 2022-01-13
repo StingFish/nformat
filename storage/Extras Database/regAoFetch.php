@@ -28,7 +28,7 @@
 
     if(!isset($_SESSION['User']))
     {
-      echo "<script>alert('You must login first.');window.location='logout.php';</script>";
+      echo "<script>alert('You must login first.');window.location='../../landpage.php;</script>";
     }
     isset($_SESSION['User']);
     isset($_SESSION['Use']);
@@ -40,7 +40,7 @@ if(isset($_POST["affair_query"]))
 {
 	
 	$search = mysqli_real_escape_string($db_connect, $_POST["affair_query"]);
-	$query = " SELECT * FROM tbl_addons WHERE year LIKE '%".$search."%'";
+	$query = " SELECT * FROM tbl_addons WHERE addon_year LIKE '%".$search."%'";
 }
 else
 {
@@ -78,7 +78,7 @@ if(mysqli_num_rows($result) > 0)
 		$output .= '
 			<tr>
 				<td data-label="First Name">'.$row["front_title"].'</td>
-				<td data-label="Image"><img class="image-official" src="data:image/jpeg;base64,'.base64_encode($row["messages"]).'"/>
+				<td data-label="Image"><img class="image-official" src="uploads/'.$row["messages"].'"/>
 				</td>
         <td data-label="Last Name"><input type="color" value='.$row["color_scheme"].' disabled></td>
 				<td data-label="Year">'.$row["addon_year"].'</td>
@@ -87,7 +87,7 @@ if(mysqli_num_rows($result) > 0)
               <a class="delbtn" style="text-decoration:none; color:white;" href ="RegFunction.php?edit='.$row["addon_year"].'">&#9998;</a>
                 </button>
                 <button class="button3 bRed" style="border:1px solid;width:30px;">
-              <a class="delbtn" style="text-decoration:none; color:white;" href="regFunction.php?email='.$row["addon_year"].'">&#128465;</a>
+              <a class="delbtn" style="text-decoration:none; color:white;" href="regFunction.php?email='.$row["messages"].'">&#128465;</a>
                 </button>
               </td>
 			</tr>

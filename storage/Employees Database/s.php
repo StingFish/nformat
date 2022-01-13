@@ -3,7 +3,7 @@
 session_start();
 if(!isset($_SESSION['User']))
     {
-      echo "<script>alert('You must login first.');window.location='../../LC.php';</script>";
+      echo "<script>alert('You must login first.');window.location='../../landpage.php;</script>";
     }
     else{
     isset($_SESSION['User']);
@@ -20,12 +20,20 @@ if(isset($_POST['save2'])){
 	$dep = $_POST['pos'];
 	$year = $_POST['yr'];
 
+	$check = "SELECT * FROM folder2 WHERE type = 'A' AND year = '$year'";
+	$get = mysqli_query($mysqli, $check);
+	$fetch = mysqli_fetch_assoc($get);
+	if (!$fetch) {
+		echo "<script>alert('Create a School Year for this batch in Employees Yearbook Database.');window.location='index.php';</script>";
+	}
+	else{
 	$my = "INSERT INTO tbl_eybook (eid, elname, efname, emname, work_status, department, employee_year) VALUES ('$id', '$ln', '$fn', '$mn', '$role', '$dep', '$year')";
 	$result = mysqli_query($mysqli, $my);
 	echo mysqli_error($mysqli);
 
 	echo "<script>alert('Added to Yearbook Successfully.');window.location='index.php';</script>";
 
+}
 }
 
 if (isset($_POST['cancel'])) {

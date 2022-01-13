@@ -71,14 +71,23 @@ if (isset($_POST['lc'])) {
     array_push($errors, "Password is required");
   }
 
+
   if (count($errors) == 0) {
+
     $password = md5($password);
               $query = "SELECT * FROM tbl_accounts WHERE email='$username' AND password='$password'";
               $results=mysqli_query($db,$query);
               if (mysqli_num_rows($results) == 1) {
               $logged_in_user = mysqli_fetch_assoc($results);
-              if ($logged_in_user['atype'] == 'r') {
+              if ($logged_in_user['atype'] == 'r' || $logged_in_user['atype'] == 'R') {
                 if ($logged_in_user['is_disabled'] =='n'){
+                  date_default_timezone_set('Asia/Manila');
+                  $datetime = new DateTime();
+                  $timezone = new DateTimeZone('Asia/Manila');
+                  $datetime->setTimezone($timezone);
+                  $tag = $datetime->format('F d, Y h:i:s a');
+                  $yow = "INSERT INTO userlog (email, usertype, loginTime) VALUES ('$username', 'Registrar/Staff', '$tag')";
+                  $resulty=mysqli_query($db,$yow);
                   $years = "SELECT * FROM tbl_accounts WHERE email='$username'";
                   $resulta=mysqli_query($db,$years);
                   $log = mysqli_fetch_assoc($resulta);
@@ -89,12 +98,18 @@ if (isset($_POST['lc'])) {
                    header('Location: storage.php');
                   }
                   else{
-                  array_push($errors, "<script>alert('Your email has been disabled by the Administrator.');</script>");
+                  echo "<script>alert('Your email has been disabled by the Administrator.');</script>";
             }
           }
               if ($logged_in_user['atype'] == 'A' || $logged_in_user['atype'] == 'a'){
                 if ($logged_in_user['is_disabled'] =='n'){
-                  
+                  date_default_timezone_set('Asia/Manila');
+                  $datetime = new DateTime();
+                  $timezone = new DateTimeZone('Asia/Manila');
+                  $datetime->setTimezone($timezone);
+                  $tag = $datetime->format('F d, Y h:i:s a');
+                  $yow = "INSERT INTO userlog (email, usertype, loginTime) VALUES ('$username', 'Administrator', '$tag')";
+                  $resulty=mysqli_query($db,$yow);
                   $years = "SELECT * FROM tbl_accounts WHERE email='$username'";
                   $resulta=mysqli_query($db,$years);
                   $log = mysqli_fetch_assoc($resulta);
@@ -112,11 +127,17 @@ if (isset($_POST['lc'])) {
 
             if ($logged_in_user['atype'] == 'S' || $logged_in_user['atype'] == 's') {
               if ($logged_in_user['is_disabled'] =='n'){
-                  
+                  date_default_timezone_set('Asia/Manila');
+                  $datetime = new DateTime();
+                  $timezone = new DateTimeZone('Asia/Manila');
+                  $datetime->setTimezone($timezone);
+                  $tag = $datetime->format('F d, Y h:i:s a');
+                  $yow = "INSERT INTO userlog (email, usertype, loginTime) VALUES ('$username', 'Student', '$tag')";
+                  $resulty=mysqli_query($db,$yow);
                   $years = "SELECT * FROM tbl_accounts WHERE email='$username'";
                   $resulta=mysqli_query($db,$years);
                   $log = mysqli_fetch_assoc($resulta);
-                  $_SESSION['User3']=$username;
+                  $_SESSION['User3']=$log['lname'];
                   $_SESSION['User3.0']=$log['email'];
                   $tot= $log['year_created'];
                    $_SESSION['Users3']= $tot;
@@ -127,7 +148,7 @@ if (isset($_POST['lc'])) {
             }
       }
 }else{
-  array_push($errors, "<script>alert('Your Email/Password is Incorrect or Invalid.');</script>");
+  array_push($errors, "Your Email/Password is Incorrect or Invalid.");
 }
 }
 }

@@ -4,7 +4,7 @@
 
     if(!isset($_SESSION['User3']))
     {
-      echo "<script>alert('You must login as Student first.');window.location='../logout3.php';</script>";
+      echo "<script>alert('You must login as Student first.');window.location='../landpage.php';</script>";
     }
     isset($_SESSION['User3']);
     isset($_SESSION['Users3']);
@@ -73,7 +73,7 @@ $db=mysqli_connect('localhost','root','','tests');
                 while ($row = mysqli_fetch_array($result)){
                 $pass= $row['password'];
   echo "<div class='card'>";
-  echo '<img src="data:image/jpeg;base64,'.base64_encode($row['profile_image'] ).'"  alt="John" style="width:100%;max-height:400px">';
+  echo '<img src="../DB/'.$row['profile_image'].'"  alt="Image" style="width:100%;max-height:400px">';
   echo "<h2>".$row['lname'].", ".$row['fname']."&nbsp;".$row['mname']."</h2>
   <p class='title'>Batch Year ".$row['year_created']."</p>
   <p>".$row['email']."</p>";

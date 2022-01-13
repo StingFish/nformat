@@ -1,14 +1,20 @@
 <?php
     include_once('connect.php');
+    if(!isset($_SESSION['User2']))
+    {
+    echo "<script>alert('You must login as Admin first.');window.location='../../landpage.php';</script>";
+    }
+    isset($_SESSION['User2']);
 ?>
 <!DOCTYPE html>
 <!-- Created By CodingLab - www.codinglabweb.com -->
 <html>
 <head>
 <meta charset="utf-8">
+<link rel="shortcut icon" href="CvSU/logo-removebg.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
-<title>Edit Info</title>
+<title>Add Account</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
@@ -150,12 +156,12 @@ body{
     <input class="input-field" type="file" placeholder="file" name="f1" style="outline: 1px solid black;" accept=".mp4,.png,.jpg,.avi" required>
   </div>
           <div class="input-container">
-    <input class="input-field" type="text" placeholder="Email" name="mail" style="width:70%" value="<?php echo $email;?>" onkeyup="if(this.value.length > 0) document.getElementById('generate').disabled = false; else document.getElementById('generate').disabled = true;" required>
-    <h6 class="icon">@dfcam.edu.ph</h6>
+    <input class="input-field" type="text" placeholder="Email" name="mail" style="width:65%" value="<?php echo $email;?>" onkeypress="return /[a-z&0-9.]/i.test(event.key)" onkeyup="if(this.value.length > 0) document.getElementById('generate').disabled = false; else document.getElementById('generate').disabled = true;" required>
+    <h6 class="icon">@dfcamclpit.edu.ph</h6>
   </div>
           <div class="input-container">
     <i class="fa fa-user icon"></i>
-    <textarea style="resize: none;height: 50px;pointer-events: none;text-align: center;" class="input-field" value="<?php echo $pass;?>" type="text" id="pw" placeholder="Username" name="psw" required></textarea>
+    <textarea style="resize: none;height: 50px;pointer-events: none;text-align: center;" class="input-field" value="<?php echo $pass;?>" type="text" id="pw" placeholder="Password" name="psw" required></textarea>
   </div><br>
           <div class="row">
             <input id="len" value="20" type="number" min="8" max="30" style="display:none;"> 
@@ -185,15 +191,15 @@ body{
           </div>
           <div class="input-container">
     <i class="fa fa-user icon"></i>
-    <input class="input-field" type="text" value="<?php echo $last;?>" placeholder="Last Name" name="Lname" required>
+    <input class="input-field" type="text" onkeypress="return /[a-z-]/i.test(event.key)" value="<?php echo $last;?>" placeholder="Last Name" name="Lname" required>
   </div>
           <div class="input-container">
     <i class="fa fa-user icon"></i>
-    <input class="input-field" type="text" placeholder="First Name" value="<?php echo $first;?>" name="Fname" required>
+    <input class="input-field" type="text" onkeypress="return /[a-z keyCode]/i.test(event.key)" placeholder="First Name" value="<?php echo $first;?>" name="Fname" required>
   </div>
           <div class="input-container">
     <i class="fa fa-user icon"></i>
-    <input class="input-field" type="text" placeholder="Middle Name" value="<?php echo $mid;?>" name="Mname" required>
+    <input class="input-field" type="text" onkeypress="return /[a-z]/i.test(event.key)" placeholder="Middle Name" value="<?php echo $mid;?>" name="Mname" required>
   </div>
           <div class="input-container">
     <i class="fa fa-user icon"></i>
@@ -221,7 +227,7 @@ body{
     <i class="icon"></i>
     <input class="input-field" type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" onkeypress="return /[0-9]/i.test(event.key)" maxlength="4" placeholder="Batch Year" name="yrr" value="<?php echo $yerr;?>" required>
   </div>
-          <center><small>(A = Admin, R = Registrar, S = Student)</small></center>
+          <center><small>(A = Admin, R = Registrar/Prof, S = Student)</small></center>
           
           <div class="input-container">
     <i class="icon"></i>
@@ -237,7 +243,7 @@ body{
   </div>
           <div class="input-container">
     <i class="fa fa-user icon"></i>
-    <input class="input-field" type="text" placeholder="Course" name="course" value="<?php echo $cour;?>" maxlength="4" required>
+    <input class="input-field" type="text" placeholder="Course" name="course" value="<?php echo $cour;?>"onkeypress="return /[a-z]/i.test(event.key)" maxlength="4" required>
   </div>
           <div class="input-container">
     <i class="fa fa-user icon"></i>

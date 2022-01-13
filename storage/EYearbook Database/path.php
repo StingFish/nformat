@@ -3,7 +3,7 @@
 
     if(!isset($_SESSION['User']))
     {
-    echo "<script>alert('You must login as Registrar first.');window.location='LC.php';</script>";
+    echo "<script>alert('You must login as Registrar first.');window.location='../../landpage.php';</script>";
     }
     isset($_SESSION['User']);
 ?>
@@ -260,7 +260,7 @@ hov:hover{
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <?php
     while ($row = mysqli_fetch_array($result)){
-    echo '<center><img src="CvSU/logo-removebg.png" style="width:80%;margin-left:0px;border-radius:50%;"></center>';
+    echo '<center><img src="../../DB/'.$row['profile_image'].'" style="width:80%;margin-left:0px;border-radius:50%;"></center>';
  
   echo "<center><p style='margin-left:-10px;color:white;'>".$row['fname']." ".$row['lname']."</p><p>".$row['email']."</p></center>";
    }

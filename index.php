@@ -1,3 +1,3 @@
 <?php
-header('Location: LC.php');
+header('Location: landpage.php');
 ?>

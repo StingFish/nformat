@@ -3,7 +3,7 @@ include ('connect.php');
 
     if(!isset($_SESSION['User2']))
     {
-    echo "<script>alert('You must login as Admin first.');window.location='../../LC.php';</script>";
+    echo "<script>alert('You must login as Admin first.');window.location='../../landpage.php';</script>";
     }
     isset($_SESSION['User2']);
 ?>
@@ -11,7 +11,7 @@ include ('connect.php');
 <html>
 <head>
 <meta charset="utf-8">
-<title>Item</title>
+<title>Accounts Database</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -313,7 +313,7 @@ a.float:hover + div.label-container{
     $user_check_query = "SELECT * FROM tbl_accounts WHERE email='$goo'";
          $res = mysqli_query($db, $user_check_query);
     while ($rows = mysqli_fetch_array($res)){
-    echo '<center><img src="data:image/jpeg;base64,'.base64_encode($rows["profile_image"]).'" style="width:80%;margin-left:0px;border-radius:50%;"></center>';
+    echo '<center><img src="../../DB/'.$rows["profile_image"].'" style="width:80%;margin-left:0px;border-radius:50%;"></center>';
  
   echo "<center><p style='margin-left:-10px;color:white;'>".$rows['fname']." ".$rows['mname']." ".$rows['lname']."</p></center>";
    }
