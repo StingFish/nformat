@@ -67,7 +67,7 @@ if ($uploadOk == 0) {
     $bars = htmlspecialchars( basename( $_FILES["fileToUpload"]["name"]));
     $asd = "INSERT INTO tbl_jobs (filename, comp_name, date_release) VALUES ('$bars','$company','$desc')";
     $result = mysqli_query($db, $asd);
-    echo "<script>alert('The file has been uploaded.');window.location='index.php';</script>";
+    echo "<script>alert('The job entry has been added.');window.location='index.php';</script>";
   } else {
     echo "Sorry, there was an error uploading your file.";
   }

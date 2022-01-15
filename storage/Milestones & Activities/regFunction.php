@@ -15,7 +15,13 @@ $mysqli = new mysqli('localhost', 'root', '', 'tests') or die(mysqli_error($mysq
 
 if(isset($_GET['editan'])){
 	$EMAIL = $_GET['editan'];
-	$mysqli->query("DELETE FROM tbl_academic WHERE academic_entry_id = '$EMAIL'") or die($mysqli->error());
-  header("Location: index.php");
+	$path = "uploads/" . $EMAIL;
+  if (!unlink($path)) {
+    echo "<script>alert('You already delete it.');window.location='index.php';</script>";
+  }
+  else{
+  $mysqli->query("DELETE FROM tbl_academic WHERE academic_image = '$EMAIL'") or die($mysqli->error());
+  echo "<script>alert('Delete it.');window.location='index.php';</script>";
+}
 }
 ?>

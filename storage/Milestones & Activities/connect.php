@@ -29,7 +29,7 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
   if($check !== false) {
     $uploadOk = 1;
   } else {
-    echo "File is not an image.";
+    array_push($errors, "File is not an image.");
     $uploadOk = 0;
   }
 
@@ -42,14 +42,13 @@ if (file_exists($target_file)) {
 
 // Check file size
 if ($_FILES["f1"]["size"] > 5000000) {
-  echo "Sorry, your file is too large.";
+  array_push($errors, "Sorry, your file is too large.");
   $uploadOk = 0;
 }
 
 // Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
-  echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+  array_push($errors, "Sorry, only JPG, JPEG, PNG files are allowed.");
   $uploadOk = 0;
 }
 
@@ -64,7 +63,7 @@ if ($uploadOk == 0) {
     $res = mysqli_query($db, $insertion);
     echo mysqli_error($db);
     if ($res){
-    echo "<script>alert('Added Successfully to Employee.');window.location='index.php';</script>";
+    echo "<script>alert('Added Successfully to Milestones and Academic.');window.location='index.php';</script>";
     }
  }
 }

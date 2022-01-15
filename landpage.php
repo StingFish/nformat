@@ -13,6 +13,7 @@ if(isset($_SESSION['User3'])) {
      exit; // for good measure
 }
 ?>
+
 <!DOCTYPE html>
 <html style="font-size: 16px;">
   <head>
@@ -22,6 +23,7 @@ if(isset($_SESSION['User3'])) {
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>Home</title>
+    <link rel="shortcut icon" href="CvSU/logo-removebg.png">
     <link rel="stylesheet" href="npage.css" media="screen">
 <link rel="stylesheet" href="Home.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery-1.9.1.min.js" defer=""></script>
@@ -44,16 +46,16 @@ if(isset($_SESSION['User3'])) {
     <meta property="og:title" content="Home">
     <meta property="og:type" content="website">
   </head>
-  <body class="u-body"><header class="u-clearfix u-header u-palette-1-dark-2 u-header" id="sec-f6c8"><div class="u-clearfix u-sheet u-sheet-1">
+  <body class="u-body"><header class="u-clearfix u-header u-palette-1-dark-2 u-header" id="sec-f6c8" style="background-color:#0276d8"><div class="u-clearfix u-sheet u-sheet-1">
         <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="328" data-image-height="336">
           <img src="images/logo-removebg.png" class="u-logo-image u-logo-image-1">
         </a>
-        <a href="LC.php" class="u-btn u-button-style u-btn-1">LOGIN<br>
+        <a href="LC.php" class="u-btn u-button-style u-btn-1">SIGN IN<br>
         </a>
-        <h1 class="u-text u-text-default u-text-1">Dr. Filemon C. Aguilar Memorial College of Las Piñas - IT Campus</h1>
-        <p class="u-text u-text-default u-text-2">D&nbsp; I&nbsp; G&nbsp; I&nbsp; T&nbsp; A&nbsp; L&nbsp; &nbsp; &nbsp; &nbsp;Y&nbsp; E&nbsp; A&nbsp; R&nbsp; B&nbsp; O&nbsp; O&nbsp; K</p>
+        <h1 class="u-text u-text-default u-text-1">DFCAMCLP-IT Campus</h1>
+        <p class="u-text u-text-default u-text-2">DIGITAL&nbsp;YEARBOOK</p>
       </div></header>
-    <section class="u-clearfix u-valign-middle u-section-1" id="carousel_25e8">
+    <section class="u-clearfix u-section-1" id="carousel_25e8">
       <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
         <div class="u-layout">
           <div class="u-layout-col">
@@ -61,7 +63,7 @@ if(isset($_SESSION['User3'])) {
               <div class="u-layout-row">
                 <div class="u-size-22">
                   <div class="u-layout-col">
-                    <div class="u-container-style u-custom-color-1 u-layout-cell u-left-cell u-size-60 u-layout-cell-1">
+                    <div class="u-container-style u-layout-cell u-left-cell u-size-60 u-white u-layout-cell-1">
                       <div class="u-container-layout u-container-layout-1">
                         <h3 class="u-text u-text-1">about<br>
                         </h3>
@@ -73,7 +75,7 @@ if(isset($_SESSION['User3'])) {
                 </div>
                 <div class="u-size-38">
                   <div class="u-layout-col">
-                    <div class="u-container-style u-image u-layout-cell u-right-cell u-size-60 u-image-1">
+                    <div class="u-container-style u-image u-layout-cell u-right-cell u-size-60 u-image-1" data-image-width="1020" data-image-height="559">
                       <div class="u-container-layout u-container-layout-2"></div>
                     </div>
                   </div>
@@ -82,13 +84,13 @@ if(isset($_SESSION['User3'])) {
             </div>
             <div class="u-size-30">
               <div class="u-layout-row">
-                <div class="u-container-style u-image u-layout-cell u-left-cell u-size-15 u-size-30-md u-image-2">
+                <div class="u-container-style u-image u-layout-cell u-left-cell u-size-15 u-size-30-md u-image-2" data-image-width="1619" data-image-height="1080">
                   <div class="u-container-layout u-container-layout-3"></div>
                 </div>
-                <div class="u-container-style u-image u-layout-cell u-size-15 u-size-30-md u-image-3">
+                <div class="u-container-style u-image u-layout-cell u-size-15 u-size-30-md u-image-3" data-image-width="393" data-image-height="320">
                   <div class="u-container-layout u-container-layout-4"></div>
                 </div>
-                <div class="u-container-style u-custom-color-2 u-layout-cell u-size-15 u-size-30-md u-layout-cell-5">
+                <div class="u-container-style u-layout-cell u-size-15 u-size-30-md u-layout-cell-5">
                   <div class="u-container-layout u-container-layout-5">
                     <h4 class="u-text u-text-3">Access ANYWHERE<br>
                     </h4>
@@ -98,7 +100,7 @@ if(isset($_SESSION['User3'])) {
                     </p>
                   </div>
                 </div>
-                <div class="u-container-style u-image u-layout-cell u-right-cell u-size-15 u-size-30-md u-image-4" data-image-width="1280" data-image-height="853">
+                <div class="u-container-style u-image u-layout-cell u-right-cell u-size-15 u-size-30-md u-image-4" data-image-width="416" data-image-height="500">
                   <div class="u-container-layout u-container-layout-6"></div>
                 </div>
               </div>
@@ -107,39 +109,39 @@ if(isset($_SESSION['User3'])) {
         </div>
       </div>
     </section>
-    <section class="u-align-center u-clearfix u-palette-1-dark-1 u-valign-top-lg u-valign-top-xl u-section-2" id="carousel_7d09">
+    <section class="u-align-center u-clearfix u-palette-1-dark-1 u-valign-top-lg u-valign-top-xl u-section-2" id="carousel_7d09" style="background-color:#0276d8">
       <div class="u-expanded-width u-shape u-shape-rectangle u-white u-shape-1"></div>
       <div class="u-list u-list-1">
         <div class="u-repeater u-repeater-1">
           <div class="u-align-center u-container-style u-list-item u-repeater-item u-white u-list-item-1">
             <div class="u-container-layout u-similar-container u-container-layout-1"><span class="u-align-left u-file-icon u-icon u-icon-rectangle u-palette-1-light-2 u-spacing-22 u-icon-1"><img src="images/1579643.png" alt=""></span>
               <h5 class="u-custom-font u-text u-text-default u-text-font u-text-1"> modern</h5>
-              <p class="u-text u-text-palette-5-dark-2 u-text-2">It is timely relatable to the modern day because it is in electronic form.</p>
+              <p class="u-text u-text-palette-5-dark-2 u-text-2">It is related to the new generation that will help the campus.</p>
             </div>
           </div>
           <div class="u-align-center u-container-style u-list-item u-repeater-item u-white u-list-item-2">
             <div class="u-container-layout u-similar-container u-container-layout-2"><span class="u-align-left u-file-icon u-icon u-icon-rectangle u-palette-1-light-2 u-spacing-22 u-icon-2"><img src="images/4963638.png" alt=""></span>
               <h5 class="u-custom-font u-text u-text-default u-text-font u-text-3"> portable</h5>
-              <p class="u-text u-text-palette-5-dark-2 u-text-4">You can able to be easily open it everywhere, especially because being of a lighter and smaller version than usual.</p>
+              <p class="u-text u-text-palette-5-dark-2 u-text-4">You can access it everywhere you are by just opening it to your browser in smart phones, Laptop, Personal Computer, etc. </p>
             </div>
           </div>
           <div class="u-align-center u-container-style u-list-item u-repeater-item u-white u-list-item-3">
             <div class="u-container-layout u-similar-container u-container-layout-3"><span class="u-align-left u-file-icon u-icon u-icon-rectangle u-palette-1-light-2 u-spacing-22 u-icon-3"><img src="images/3596080.png" alt=""></span>
               <h5 class="u-custom-font u-text u-text-default u-text-font u-text-5"> eASY aCCESS</h5>
-              <p class="u-text u-text-palette-5-dark-2 u-text-6">You can easily open it on online browser whether it is on Laptop, Personal Computer, Smartphones, etc.</p>
+              <p class="u-text u-text-palette-5-dark-2 u-text-6">No long procedure to access your digital yearbook. Just sign-in and youre good to go.</p>
             </div>
           </div>
           <div class="u-align-center u-container-style u-list-item u-repeater-item u-white u-list-item-4">
             <div class="u-container-layout u-similar-container u-container-layout-4"><span class="u-align-left u-file-icon u-icon u-icon-rectangle u-palette-1-light-2 u-spacing-22 u-icon-4"><img src="images/3898786.png" alt=""></span>
               <h5 class="u-custom-font u-text u-text-default u-text-font u-text-7"> free</h5>
-              <p class="u-text u-text-palette-5-dark-2 u-text-8">No payment to be pay guaranteed and you can easily have a eybook with no long wait.</p>
+              <p class="u-text u-text-palette-5-dark-2 u-text-8">It is because it has no paper to print and you don't need to wait long time to have it.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
     <section class="u-align-center u-clearfix u-section-3" id="carousel_9e96">
-      <div class="u-expanded-width u-palette-1-dark-2 u-shape u-shape-rectangle u-shape-1"></div>
+      <div class="u-expanded-width u-palette-1-dark-2 u-shape u-shape-rectangle u-shape-1" style="background-color:#0276d8"></div>
       <div class="u-clearfix u-gutter-20 u-layout-wrap u-layout-wrap-1">
         <div class="u-gutter-0 u-layout">
           <div class="u-layout-row">
@@ -208,11 +210,6 @@ if(isset($_SESSION['User3'])) {
                     <div class="u-layout-row">
                       <div class="u-container-style u-layout-cell u-left-cell u-size-60 u-layout-cell-3">
                         <div class="u-container-layout u-container-layout-3">
-                          <div class="u-expanded u-grey-light-2 u-map">
-                            <div class="embed-responsive">
-                              <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15453.583408703638!2d120.97229440604836!3d14.461944399999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397cde60d559419%3A0xe6bc9468dea5b8ab!2sDr.%20Filemon%20C.%20Aguilar%20Information%20Technology%20Training%20Institute!5e0!3m2!1sen!2sph!4v1641818510427!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                            </div>
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -223,33 +220,8 @@ if(isset($_SESSION['User3'])) {
                 <div class="u-layout-col">
                   <div class="u-container-style u-layout-cell u-right-cell u-size-60 u-layout-cell-4">
                     <div class="u-container-layout u-valign-top u-container-layout-4">
-                      <h3 class="u-text u-text-default u-text-5">send us message</h3>
-                      <p class="u-text u-text-default u-text-6">We would like to hear from you! Please take a moment&nbsp; to tell&nbsp; us about the service you received.&nbsp;</p>
-                      <div class="u-form u-form-1">
-                        <form action="" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 0;" source="email" name="form">
-                          <input type="hidden" id="siteId" name="siteId" value="1224920">
-                          <input type="hidden" id="pageId" name="pageId" value="1224930">
-                          <div class="u-form-group u-form-name">
-                            <label for="name-eef9" class="u-form-control-hidden u-label">Name</label>
-                            <input type="text" placeholder="Enter your Name" id="name-eef9" name="name" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
-                          </div>
-                          <div class="u-form-email u-form-group">
-                            <label for="email-eef9" class="u-form-control-hidden u-label">Email</label>
-                            <input type="email" placeholder="Enter a valid email address" id="email-eef9" name="email" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
-                          </div>
-                          <div class="u-form-group u-form-message">
-                            <label for="message-eef9" class="u-form-control-hidden u-label">Message</label>
-                            <textarea placeholder="Enter your message" rows="4" cols="50" id="message-eef9" name="message" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required=""></textarea>
-                          </div>
-                          <div class="u-align-left u-form-group u-form-submit">
-                            <a href="#" class="u-border-2 u-border-grey-75 u-btn u-btn-round u-btn-submit u-button-style u-none u-radius-30 u-btn-2">Submit</a>
-                            <input type="submit" value="submit" class="u-form-control-hidden">
-                          </div>
-                          <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
-                          <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
-                          <input type="hidden" value="" name="recaptchaResponse">
-                        </form>
-                      </div>
+                      <h3 class="u-text u-text-default u-text-5">Where are we located?</h3>
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3863.4027351751192!2d120.97595805259947!3d14.461548604989556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397cde60d559419%3A0xe6bc9468dea5b8ab!2sDr.%20Filemon%20C.%20Aguilar%20Information%20Technology%20Training%20Institute!5e0!3m2!1sen!2sph!4v1642131417389!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                   </div>
                 </div>

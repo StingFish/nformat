@@ -188,7 +188,12 @@ echo "</style>";
   </div>
           <div class='input-container'>
     <i class='fa icon'></i>
-    <textarea class='input-field' type='text' placeholder='Quotes' name='quo' style='resize:none' required></textarea>
+    <textarea class='input-field' type='text' placeholder='Quotes' name='quo' style='resize:none; font-size:13px' required></textarea>
+  </div>
+
+          <div class='input-container'>
+    <i class='fa icon'></i>
+    <input class='input-field' type='text' placeholder='Year & Section' name='sec' style='resize:none' required>
   </div>
 
           <div class='input-container'>

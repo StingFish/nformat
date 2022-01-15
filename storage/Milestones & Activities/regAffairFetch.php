@@ -78,7 +78,7 @@ if(mysqli_num_rows($result) > 0)
 				<td data-label="Image"><img style="max-width:50%;max-height:50%" src="uploads/'.$row["academic_image"].'"/></td>
 				<td data-label="Last Name">'.$row["academic_description"].'</td>
         		<td align="center">
-                <a style="text-decoration:none; color:white;" href ="regFunction.php?editan='.$row["academic_entry_id"].'"><button class="button button2" style="width:90%;height:60px;">
+                <a style="text-decoration:none; color:white;" href ="regFunction.php?editan='.$row["academic_image"].'"><button class="button button2" style="width:90%;height:60px;">
               Delete entry</button></a>
                 
               </td>

@@ -16,6 +16,7 @@ if(isset($_POST['save2'])){
 	$ln= $_POST['lname'];
 	$fn= $_POST['fname'];
 	$mn= $_POST['mname'];
+	$sec = $_POST['sec'];
 	$role = $_POST['quo'];
 	$year = $_POST['yr'];
 
@@ -26,7 +27,7 @@ if(isset($_POST['save2'])){
 		echo "<script>alert('Create a School Year for this batch in Alumni Yearbook Database.');window.location='index.php';</script>";
 	}
 	else{
-	$my = "INSERT INTO tbl_sybook (sid, slname, sfname, smname, quotes, school_year) VALUES ('$id', '$ln', '$fn', '$mn', '$role', '$year')";
+	$my = "INSERT INTO tbl_sybook (sid, slname, sfname, smname, quotes, YrSec, school_year) VALUES ('$id', '$ln', '$fn', '$mn', '$role', '$sec', '$year')";
 	$result = mysqli_query($mysqli, $my);
 	echo mysqli_error($mysqli);
 

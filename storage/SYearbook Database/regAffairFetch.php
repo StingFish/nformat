@@ -42,12 +42,12 @@ if(isset($_POST["affair_query"]))
 {
 	
 	$search = mysqli_real_escape_string($db_connect, $_POST["affair_query"]);
-	$query = " SELECT tbl_accounts.profile_image, tbl_sybook.slname, tbl_students.sid, tbl_sybook.sfname, tbl_sybook.smname, tbl_sybook.quotes, tbl_students.course, tbl_sybook.school_year FROM tbl_sybook JOIN tbl_students ON tbl_students.sid=tbl_sybook.sid JOIN tbl_accounts ON tbl_accounts.email=tbl_students.email WHERE school_year = '$Yee' AND slname LIKE '%".$search."%' ORDER BY slname ASC";
+	$query = " SELECT tbl_accounts.profile_image, tbl_sybook.slname, tbl_students.sid, tbl_sybook.sfname, tbl_sybook.smname, tbl_sybook.quotes, tbl_students.course, tbl_sybook.YrSec, tbl_sybook.school_year FROM tbl_sybook JOIN tbl_students ON tbl_students.sid=tbl_sybook.sid JOIN tbl_accounts ON tbl_accounts.email=tbl_students.email WHERE school_year = '$Yee' AND slname LIKE '%".$search."%' ORDER BY slname ASC";
 }
 else
 {
 	$query = "
-	SELECT tbl_accounts.profile_image, tbl_sybook.slname, tbl_students.sid, tbl_sybook.sfname, tbl_sybook.smname, tbl_sybook.quotes, tbl_students.course, tbl_sybook.school_year FROM tbl_sybook JOIN tbl_students ON tbl_students.sid=tbl_sybook.sid JOIN tbl_accounts ON tbl_accounts.email=tbl_students.email WHERE school_year = '$Yee' ORDER BY slname ASC";
+	SELECT tbl_accounts.profile_image, tbl_sybook.slname, tbl_students.sid, tbl_sybook.sfname, tbl_sybook.smname, tbl_sybook.quotes, tbl_students.course, tbl_sybook.YrSec, tbl_sybook.school_year FROM tbl_sybook JOIN tbl_students ON tbl_students.sid=tbl_sybook.sid JOIN tbl_accounts ON tbl_accounts.email=tbl_students.email WHERE school_year = '$Yee' ORDER BY slname ASC";
 }
 $result = mysqli_query($db_connect, $query);
 
@@ -63,6 +63,7 @@ if(mysqli_num_rows($result) > 0)
 							<th style="width:150px;">First Name</th>
 							<th style="width:150px;">Middle Name</th>
 							<th style="width:150px;">Course</th>
+							<th style="width:150px;">Year & Section</th>
 							<th style="width:150px;">Quotes</th>
 							<th style="width:150px;">School Year</th>
 							<th style="width:150px;">Action</th>
@@ -75,6 +76,7 @@ if(mysqli_num_rows($result) > 0)
 							<th style="width:150px;">First Name</th>
 							<th style="width:150px;">Middle Name</th>
 							<th style="width:150px;">Course</th>
+							<th style="width:150px;">Year & Section</th>
 							<th style="width:150px;">Quotes</th>
 							<th style="width:150px;">School Year</th>
 							<th style="width:150px;">Action</th>
@@ -90,6 +92,7 @@ if(mysqli_num_rows($result) > 0)
         		<td data-label="First Name">'.$row["sfname"].'</td>
 				<td data-label="Middle/tInitial">'.$row["smname"].'</td>
 				<td data-label="Course">'.$row["course"].'</td>
+				<td data-label="Course">'.$row["YrSec"].'</td>
 				<td data-label="Quotes">'.$row["quotes"].'</td>
 				<td data-label="School Year">'.$row["school_year"].'</td>
         		<td align="center">
@@ -114,6 +117,7 @@ else
 							<th style="width:150px;">First Name</th>
 							<th style="width:150px;">Middle Name</th>
 							<th style="width:150px;">Course</th>
+							<th style="width:150px;">Year & Section</th>
 							<th style="width:150px;">Quotes</th>
 							<th style="width:150px;">School Year</th>
 							<th style="width:150px;">Action</th>
@@ -126,6 +130,7 @@ else
 							<th style="width:150px;">First Name</th>
 							<th style="width:150px;">Middle Name</th>
 							<th style="width:150px;">Course</th>
+							<th style="width:150px;">Year & Section</th>
 							<th style="width:150px;">Quotes</th>
 							<th style="width:150px;">School Year</th>
 							<th style="width:150px;">Action</th>

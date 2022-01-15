@@ -21,7 +21,7 @@ if(isset($_POST['save2'])){
 	$result = mysqli_query($mysqli, $my);
 	echo mysqli_error($mysqli);
 
-	echo "<script>alert('Added to Yearbook Successfully.');window.location='index.php';</script>";
+	echo "<script>alert('Updated Successfully.');window.location='index.php';</script>";
 
 }
 

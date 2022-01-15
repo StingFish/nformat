@@ -24,8 +24,12 @@
   font-family: 'Poppins',sans-serif;
 }
 body{
-  background-color: gray;
-  overflow: hidden;
+  background-image: url("assets/tmp2.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow-x: hidden;
 }
 ::selection{
   background: rgba(26,188,156,0.3);

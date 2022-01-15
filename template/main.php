@@ -362,7 +362,7 @@ span.onclick = function() {
   <?php 
   $db=mysqli_connect('localhost', 'root', '', 'tests');
   $goo= $_SESSION['Users3'];
-         $user_check_query = "SELECT tbl_accounts.profile_image, tbl_sybook.slname, tbl_sybook.smname, tbl_sybook.sfname, tbl_sybook.quotes, tbl_sybook.school_year FROM tbl_sybook JOIN tbl_students ON tbl_students.sid=tbl_sybook.sid JOIN tbl_accounts on tbl_accounts.email=tbl_students.email WHERE school_year='$goo' ORDER BY slname";
+         $user_check_query = "SELECT tbl_accounts.profile_image, tbl_students.course, tbl_sybook.slname, tbl_sybook.smname, tbl_sybook.sfname, tbl_sybook.quotes, tbl_sybook.YrSec, tbl_sybook.school_year FROM tbl_sybook JOIN tbl_students ON tbl_students.sid=tbl_sybook.sid JOIN tbl_accounts on tbl_accounts.email=tbl_students.email WHERE school_year='$goo' ORDER BY slname";
          $result = mysqli_query($db, $user_check_query);
 
          while ($row = mysqli_fetch_array($result)){
@@ -374,7 +374,8 @@ span.onclick = function() {
             echo "</div>";
             echo "<div class='contentt'>";
             echo "<h2 class='unselectable' style='font-family: Oswald;'>".$row['sfname']."&nbsp;".substr($row['smname'],0,1).".&nbsp;".$row['slname']."</h2>";
-            echo "<p style='font-family: Oswald;'>&#10075;&#10075;".$row['quotes']."."."&#10076;&#10076;</p>";
+            echo "<h3 class='unselectable' style='font-family: Oswald;'>".$row['course'].".&nbsp;".$row['YrSec']."</h3>";
+            echo "<h3 style='font-family: Oswald;'>&#10075;&#10075;".$row['quotes']."."."&#10076;&#10076;</h3>";
             echo "</div>";
             echo "</div>";
             echo "</div>";
