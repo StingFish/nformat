@@ -106,7 +106,7 @@ hov:hover{
   color: black;
 }
 .loc{
-    float: right;
+    float: center;
 }
 .modal {
   display: none; /* Hidden by default */
@@ -245,6 +245,11 @@ hov:hover{
   background-color: #008CBA;
   color: white;
 }
+.outer
+{
+    width:100%;
+    text-align: center;
+}
 </style>
 </head>
 <body>
@@ -286,8 +291,8 @@ hov:hover{
 <div id="myModal" class="modal">
 
   <!-- Modal content -->
-  <div class="modal-content">
-    <div class="modal-header">
+  <div class="modal-content" style="max-width: 50%;">
+    <div class="modal-header" style="background-color: #0276d8">
       <span class="close">&times;</span>
       <p>New Data</p>
     </div>
@@ -297,11 +302,10 @@ hov:hover{
         <?php $goose=date("Y"); ?>
       <input type="number" min="2018" max="<?php echo $goose; ?>" name="f1" style="width:100%;border-bottom:1px solid black;outline:none;" onkeypress="return /[0-9]/i.test(event.key)">
     </div>
-    <div class="modal-footer">
-        <div>
-      <button class="loc" name="submit1" style="background-color:white;width:40px;height: 30px;margin-left: 10px;display: inline-block;">ADD</button>
-      <button class="loc" name="submit2" style="background-color:white;width:50px;height: 30px;margin-right: 10px;">DELETE</button>
-    </div>
+    <div class="modal-footer" style="background-color: #0276d8">
+      <button class="loc" name="submit1" style="background-color:white;width:40px;height: 30px;display: inline-block;margin-left: 10px;">ADD</button>
+      <button class="loc" name="submit2" style="background-color:white;width:70px;height: 30px;display: inline-block;">DELETE</button>
+   
 </div>
 </form>
     </div>

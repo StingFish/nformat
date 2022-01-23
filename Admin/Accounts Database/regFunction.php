@@ -13,14 +13,17 @@ $mysqli = new mysqli('localhost', 'root', '', 'tests') or die(mysqli_error($mysq
 #delete btn(new)
 
 if(isset($_GET['email'])){
-	$file = $_GET['email'];
+    $file = $_GET['email'];
+    $que = "SELECT * FROM tbl_accounts WHERE email = '$file'";
+  $cre = mysqli_query($mysqli, $que);
+    $dre = mysqli_fetch_array($cre);
   $Yrr = $_SESSION['Use'];
-  $path = "uploads/" . $file;
+  $path = "../../DB/" . $dre['profile_image'];
   if (!unlink($path)) {
     echo "<script>alert('You already delete it.');window.location='index.php';</script>";
   }
   else{
-	$mysqli->query("DELETE FROM tbl_addons WHERE messages = '$file'") or die($mysqli->error());
+  $mysqli->query("DELETE FROM tbl_accounts WHERE email = '$file'") or die($mysqli->error());
   header("Location: index.php");
 }
 }

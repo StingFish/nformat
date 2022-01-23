@@ -225,7 +225,7 @@ body{
   </script>
           <div class="input-container">
     <i class="icon"></i>
-    <input class="input-field" id="num" type="number" placeholder="Telephone No. (XXX-XXXX)" name="mobile" value="<?php echo $tel;?>" pattern="[0-9]{3}-[0-9]{4}" required>
+    <input class="input-field" onkeypress="return /[0-9-]/i.test(event.key)" type="tel" placeholder="Telephone No. (XXX-XXXX)" name="mobile" value="<?php echo $tel;?>" pattern="[0-9]{3}-[0-9]{4}" required>
   </div>
           <div class="input-container">
     <i class="icon"></i>

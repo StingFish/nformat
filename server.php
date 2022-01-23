@@ -61,6 +61,14 @@ if (isset($_POST['lc'])) {
   $username = mysqli_real_escape_string($db, $_POST['username']);
   $password = mysqli_real_escape_string($db, $_POST['password']);
 
+  //recaptcha
+  $secret = "6LdRSfsaAAAAAHw49iZL6lvc7lEoHnO-g4seiEIW";
+  $response = $_POST['g-recaptcha-response'];
+  $remoteip = $_SERVER['REMOTE_ADDR'];
+  $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$response&remoteip=$remoteip";
+  $data = file_get_contents($url);
+  $APIrow = json_decode($data, true);
+
   if (empty($username) && empty($password)) {
     array_push($errors, "School ID & Password is required");
   }
@@ -69,10 +77,13 @@ if (isset($_POST['lc'])) {
   }
   else if (empty($password)) {
     array_push($errors, "Password is required");
+
+  }else if (empty($response = $_POST['g-recaptcha-response'])){
+    array_push($errors, "ReCaptcha is required");
   }
 
 
-  if (count($errors) == 0) {
+  if (count($errors) == 0 && $APIrow['success']==true) {
 
     $password = md5($password);
               $query = "SELECT * FROM tbl_accounts WHERE email='$username' AND password='$password'";

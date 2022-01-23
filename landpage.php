@@ -31,11 +31,6 @@ if(isset($_SESSION['User3'])) {
     <meta name="generator" content="Nicepage 4.2.22, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
 
-
-
-
-
-
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
 		"@type": "Organization",
@@ -45,8 +40,14 @@ if(isset($_SESSION['User3'])) {
     <meta name="theme-color" content="#478ac9">
     <meta property="og:title" content="Home">
     <meta property="og:type" content="website">
+    <style>
+      video {
+  max-width: 100%;
+  height: auto;
+}
+    </style>
   </head>
-  <body class="u-body"><header class="u-clearfix u-header u-palette-1-dark-2 u-header" id="sec-f6c8" style="background-color:#0276d8"><div class="u-clearfix u-sheet u-sheet-1">
+  <body class="u-body" style="overflow-x:hidden"><header class="u-clearfix u-header u-palette-1-dark-2 u-header" id="sec-f6c8" style="background-color:#0276d8"><div class="u-clearfix u-sheet u-sheet-1">
         <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="328" data-image-height="336">
           <img src="images/logo-removebg.png" class="u-logo-image u-logo-image-1">
         </a>
@@ -162,11 +163,22 @@ if(isset($_SESSION['User3'])) {
     </section>
     <section class="u-clearfix u-section-4" id="sec-c0f6">
       <div class="u-clearfix u-sheet u-sheet-1">
-        <h5 class="u-align-justify u-text u-text-1">&nbsp;DFCAMCLP started as a special project of&nbsp;former Mayor Vergel "Nene" A. Aguilar&nbsp;backed up and supported by his wife, the incumbient&nbsp;City Mayor Imelda T. Aguilar.&nbsp;City Ordinance&nbsp;No. 352-97 Series of 1997&nbsp;was enacted on&nbsp;August 13, 1997&nbsp;establishing DFCAMCLP.<br>
-          <br>The school was named in honor of his father namely,&nbsp;Dr. Filemon C. Aguilar. In&nbsp;March 12, 1998, the inauguration of a campus is also the birthdate of DFCAMCLP Founder Former Mayor&nbsp;Imelda "Nene" Aguilar. DFCAMC began to offer courses of&nbsp;Bachelor of Science in Business Administration Major in Management, Marketing, Entrepreneurship, Economics and Banking and Finance&nbsp;in&nbsp;March 12, 1998&nbsp;with a total of&nbsp;1,083&nbsp;enrolled from various secondary schools. In&nbsp;October 7, 1998, the issuance of&nbsp;<b>City Accordance No. 417-A-98</b>&nbsp;correct the spelling of Felimon to Filemon.&nbsp;<br>
-          <br>The College Offered a new program, the&nbsp;<b>Bachelor of Science in Accountancy</b>. It is complimented it's other program, the&nbsp;<b>Bachelor of Science in Business Accountancy</b>&nbsp;strengthening DFCAMC’s mandate to become a full-blown school of business. In a year&nbsp;<b>2000</b>, the school affiliated with&nbsp;<b>American Civil Liberties Union</b>&nbsp;making its presence felt across the region. The college disproved the elitist notion that quality education is the monopoly with expensive private colleges and universities. The first commencement exercises was held at Aguilar Sports Complex in Pilar Village, Las Pinas City in&nbsp;<b>April 5, 2002</b>&nbsp;with&nbsp;<b>558</b>&nbsp;graduates. In October 2003, DFCAMCLP produced its first three CPA passers with 50% passing rate. In April 2009, the City Ordinance No. 887-09 Series of 2009 changed the name of the school to&nbsp;<b>Dr. Filemon C. Aguilar Memorial College of Las Pinas (DFCAMCLP)<b>.</b></b>
+        <h5 class="u-align-justify u-text u-text-1" style="word-wrap: break-word;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DFCAMCLP started as a special project of&nbsp;former Mayor Vergel "Nene" A. Aguilar&nbsp;backed up and supported by his wife, the incumbient&nbsp;City Mayor Imelda T. Aguilar.&nbsp;City Ordinance&nbsp;No. 352-97 Series of 1997&nbsp;was enacted on&nbsp;August 13, 1997&nbsp;establishing DFCAMCLP.<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The school was named in honor of his father namely,&nbsp;Dr. Filemon C. Aguilar. In&nbsp;March 12, 1998, the inauguration of a campus is also the birthdate of DFCAMCLP Founder Former Mayor&nbsp;Imelda "Nene" Aguilar. DFCAMC began to offer courses of&nbsp;Bachelor of Science in Business Administration Major in Management, Marketing, Entrepreneurship, Economics and Banking and Finance&nbsp;in&nbsp;March 12, 1998&nbsp;with a total of&nbsp;1,083&nbsp;enrolled from various secondary schools. In&nbsp;October 7, 1998, the issuance of&nbsp;<b>City Accordance No. 417-A-98</b>&nbsp;correct the spelling of Felimon to Filemon.&nbsp;<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The College Offered a new program, the&nbsp;<b>Bachelor of Science in Accountancy</b>. It is complimented it's other program, the&nbsp;<b>Bachelor of Science in Business Accountancy</b>&nbsp;strengthening DFCAMC’s mandate to become a full-blown school of business. In a year&nbsp;<b>2000</b>, the school affiliated with&nbsp;<b>American Civil Liberties Union</b>&nbsp;making its presence felt across the region. The college disproved the elitist notion that quality education is the monopoly with expensive private colleges and universities. The first commencement exercises was held at Aguilar Sports Complex in Pilar Village, Las Pinas City in&nbsp;<b>April 5, 2002</b>&nbsp;with&nbsp;<b>558</b>&nbsp;graduates. In October 2003, DFCAMCLP produced its first three CPA passers with 50% passing rate. In April 2009, the City Ordinance No. 887-09 Series of 2009 changed the name of the school to&nbsp;<b>Dr. Filemon C. Aguilar Memorial College of Las Pinas (DFCAMCLP)<b>.</b></b>
           <br>
         </h5>
+      </div>
+    </section>
+    <section class="u-clearfix u-section-4" id="sec-c0f6">
+      <div class="u-clearfix u-sheet u-sheet-1">
+
+        <center><h2 class="u-text u-text-default u-text-5"> DFCAMCLP Hymn</h2><video controls autoplay>
+  <source src="asa.mp4" type="video/mp4">
+  Your browser does not support HTML video.
+</video></center>
       </div>
     </section>
     <section class="u-clearfix u-grey-5 u-section-5" id="carousel_e927">

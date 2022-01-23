@@ -98,19 +98,19 @@ button:hover{
     transform: translateY(-500px);
 }
 #chk:checked ~ .login label{
-    transform: scale(1);    
+    transform: scale(1);
 }
 #chk:checked ~ .signup label{
     transform: scale(.6);
 }
 .error {
-  width: 100%; 
+  width: 100%;
   margin: 0px auto;
   line-height: 20px;
-  padding: 0; 
-  border: 1px solid red; 
-  color: white; 
-  background: red; 
+  padding: 0;
+  border: 1px solid red;
+  color: white;
+  background: red;
   font-family: 'Ubuntu', sans-serif;
   font-size: 12px;
   margin-top: -40px;
@@ -140,21 +140,22 @@ if(isset($_SESSION['User3'])) {
 <head>
     <title>Slide Navbar</title>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-    <div class="main">      
+    <div class="main">
         <input type="checkbox" id="chk" aria-hidden="true">
 
             <div class="signup">
                 <form action="LC.php">
-                    
+
                     <img src="CvSU/logo-removebg.png" style="padding: 10px 15px; margin-top:40px">
                 </form>
             </div>
 
             <div class="login">
                 <form action="LC.php" method="post">
-                    
+
                     <label for="chk" aria-hidden="true" style="color:#0275d8;">Sign in</label>
                     <center><?php include('errors.php');?></center>
                     <input type="email" name="username" placeholder="email" required>
@@ -168,15 +169,17 @@ if(isset($_SESSION['User3'])) {
                     } else {
                     x.type = "password";
                     }
-                }   
+                }
                     </script>
-                    <button name="lc" style="background-color:#0275d8;">Login</button>
+                    <center><div class="g-recaptcha" data-sitekey="6LdRSfsaAAAAAE4xCA7pSS96P-WRCvVBY1jrdTW1"></div>
+                    </center><br/>
+                    <button name="lc" style="background-color:#0275d8;">Sign in</button>
                 </form>
             </div>
     </div>
 </body>
 </html>
 <!-- partial -->
-  
+
 </body>
 </html>

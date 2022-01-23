@@ -108,10 +108,10 @@ if(mysqli_num_rows($result) > 0)
 				<td data-label="Is Disabled">'.$row["is_disabled"].'</td>
         <td align="center">
                 <button class="button3 bGreen" style="border:1px solid;width:30px;">
-              <a class="delbtn" style="text-decoration:none; color:white;" href ="RegFunction.php?edit='.$row["email"].'">&#9998;</a>
+              <a class="delbtn" style="text-decoration:none; color:white;" href ="regFunction.php?edit='.$row["email"].'">&#9998;</a>
                 </button>
                 <button class="button3 bRed" style="border:1px solid;width:30px;">
-              <a class="delbtn" style="text-decoration:none; color:white;" href="registarFunction.php?email='.$row["fname"].'">&#128465;</a>
+              <a class="delbtn" style="text-decoration:none; color:white;" href="regFunction.php?email='.$row["email"].'">&#128465;</a>
                 </button>
               </td>
 			</tr>

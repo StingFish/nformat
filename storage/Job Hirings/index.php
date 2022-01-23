@@ -321,7 +321,7 @@ display: inline;
   <a href="javascript:void(0);" onclick="openNav()"><img src="CvSU/logo-removebg.png" alt="logo" class="logo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $_SESSION['User']; ?></i></a>
 </div>
 <div>
-  <center><input class="inp" type="text" placeholder="Search by name" name="search-text" style="width:50%;background-position: 10px 10px;padding: 10px 20px 10px 35px;margin-bottom: 5px;margin-top: 5px;" id="search_text_affair"></center>
+  <center><input class="inp" type="text" placeholder="Search by year" onkeypress="return /[0-9]/i.test(event.key)" name="search-text" style="width:50%;background-position: 10px 10px;padding: 10px 20px 10px 35px;margin-bottom: 5px;margin-top: 5px;" id="search_text_affair"></center>
 </div>
 </div>
 <br>
