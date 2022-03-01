@@ -20,6 +20,13 @@ if(isset($_POST['save2'])){
 	$role = $_POST['quo'];
 	$year = $_POST['yr'];
 
+  $queryfilter = "SELECT * FROM tbl_sybook WHERE sid='$id'";
+  $query = mysqli_query($mysqli, $queryfilter) or die(mysqli_error($mysqli));
+  $fetchRow = mysqli_num_rows($query);
+
+  if($fetchRow >= 1){
+      echo "<script>alert('Unable to add meron na sya sa table.');window.location='index.php';</script>";
+  }else{
 	$check = "SELECT * FROM folder2 WHERE type = 'B' AND year = '$year'";
 	$get = mysqli_query($mysqli, $check);
 	$fetch = mysqli_fetch_assoc($get);
@@ -33,6 +40,7 @@ if(isset($_POST['save2'])){
 
 	echo "<script>alert('Added to Yearbook Successfully.');window.location='index.php';</script>";
 	}
+}
 }
 
 if (isset($_POST['cancel'])) {
