@@ -140,7 +140,7 @@ if(isset($_SESSION['User3'])) {
 <head>
     <title>Slide Navbar</title>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<!--<script src="https://www.google.com/recaptcha/api.js" async defer></script>-->
 </head>
 <body>
     <div class="main">
@@ -171,8 +171,8 @@ if(isset($_SESSION['User3'])) {
                     }
                 }
                     </script>
-                    <center><div class="g-recaptcha" data-sitekey="6LdRSfsaAAAAAE4xCA7pSS96P-WRCvVBY1jrdTW1"></div>
-                    </center><br/>
+                    <!--<center><div class="g-recaptcha" data-sitekey="6LdRSfsaAAAAAE4xCA7pSS96P-WRCvVBY1jrdTW1"></div>
+                    </center>--><br/>
                     <button name="lc" style="background-color:#0275d8;">Sign in</button>
                 </form>
             </div>
