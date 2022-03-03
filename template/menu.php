@@ -31,10 +31,10 @@
 <body>
 <main>
 	<a href="main.php" style="text-decoration: none;"><button><span>My Yearbook</span></button></a>
-  <a href="me.php" style="text-decoration: none;"><button><span>&nbsp;&nbsp;&nbsp;About Me&nbsp;&nbsp;&nbsp;</span></button></a>
+  <a href="meCard1.php" style="text-decoration: none;"><button><span>&nbsp;&nbsp;&nbsp;About Me&nbsp;&nbsp;&nbsp;</span></button></a>
 	<a href="index.php" style="text-decoration: none;"><button>Job Hirings&nbsp;&nbsp;</button></a>
 	<a href="../logout3.php" style="text-decoration: none;"><button>&nbsp;&nbsp;&nbsp;Sign Out&nbsp;&nbsp;&nbsp;&nbsp;</button></a>
 </main>
-  
+
 </body>
 </html>
